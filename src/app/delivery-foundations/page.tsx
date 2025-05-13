@@ -1,11 +1,41 @@
 'use client';
 
-import AudioPlayer from '@/components/AudioPlayer';
+import { client } from '@/lib/contentful';
+import AudioPlayerWrapper from '@/components/AudioPlayerWrapper';
 import Breadcrumb from '@/components/Breadcrumb';
-import { useRef } from 'react';
 
-export default function DeliveryFoundations() {
-  const audioRef = useRef<HTMLAudioElement>(null);
+export default async function DeliveryFoundations() {
+  // Fetch the entry for delivery foundations
+  const entries = await client.getEntries({
+    content_type: 'playbookInnerPage',
+    'fields.slug': 'delivery-foundations',
+  });
+  const page = entries.items[0];
+
+  if (!page || typeof page.fields !== 'object') return <div>Not found</div>;
+
+  let audioUrl: string | null = null;
+  if (
+    page.fields.audioFile &&
+    typeof page.fields.audioFile === 'object' &&
+    'fields' in page.fields.audioFile &&
+    page.fields.audioFile.fields &&
+    typeof page.fields.audioFile.fields === 'object' &&
+    'file' in page.fields.audioFile.fields &&
+    page.fields.audioFile.fields.file &&
+    typeof page.fields.audioFile.fields.file === 'object' &&
+    'url' in page.fields.audioFile.fields.file &&
+    typeof page.fields.audioFile.fields.file.url === 'string'
+  ) {
+    // Get the complete URL from Contentful
+    const fileUrl = page.fields.audioFile.fields.file.url;
+    console.log('Raw file URL from Contentful:', fileUrl);
+    
+    // For Contentful assets, we need to use the full URL with the correct domain and space ID
+    audioUrl = fileUrl.startsWith('//') ? `https:${fileUrl}` : fileUrl;
+    console.log('Final audio URL:', audioUrl);
+  }
+
   return (
     <main className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-4xl mx-auto">
@@ -23,11 +53,11 @@ export default function DeliveryFoundations() {
             </p>
           </div>
 
-          <AudioPlayer 
-            src="/sample-audio.mp3" 
-            title=""
-            audioRef={audioRef}
-          />
+          {audioUrl && (
+            <div className="mt-8">
+              <AudioPlayerWrapper audioUrl={audioUrl} />
+            </div>
+          )}
         </div>
       </div>
     </main>
