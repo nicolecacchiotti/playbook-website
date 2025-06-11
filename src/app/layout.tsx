@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import { client } from "@/lib/contentful";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,11 +9,32 @@ export const metadata: Metadata = {
 };
 
 async function getPages() {
-  const entries = await client.getEntries({ content_type: 'playbookInnerPage' });
-  return entries.items.map((item: any) => ({
-    title: item.fields.title,
-    slug: item.fields.slug,
-  }));
+  try {
+    const entries = await client.getEntries({
+      content_type: 'playbookInnerPage'
+    });
+    console.log('Complete Contentful Response:', JSON.stringify(entries, null, 2));
+    return entries.items.map((item: any) => {
+      if (!item.fields.title) {
+        console.warn('Entry missing title:', item);
+      }
+      const page = {
+        title: item.fields.title || 'Untitled',
+        slug: item.fields.slug || 'no-slug',
+        fields: {
+          body: item.fields.body,
+          description: item.fields.description,
+          audioFile: item.fields.audioFile,
+          commonPitfalls: item.fields.commonPitfalls,
+          additionalResources: item.fields.additionalResources
+        }
+      };
+      return page;
+    });
+  } catch (error) {
+    console.error('Contentful error:', error);
+    return [];
+  }
 }
 
 export default async function RootLayout({
@@ -28,7 +46,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="font-segoe">
         <HamburgerMenu pages={pages} />
         {children}
       </body>

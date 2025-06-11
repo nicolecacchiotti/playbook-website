@@ -1,0 +1,1 @@
+// This file has been moved to src/app/delivery-foundations-hardcoded/page.tsx. Please use that location for the hardcoded version. 

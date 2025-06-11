@@ -4,11 +4,16 @@ import { useState, useRef, useEffect } from 'react';
 
 interface AudioPlayerProps {
   src: string;
-  title: string;
+  title?: string;
   audioRef: React.RefObject<HTMLAudioElement>;
+  albumArt?: string;
+  episodeTitle?: string;
+  episodeDate?: string;
+  showName?: string;
+  spotifyUrl?: string;
 }
 
-export default function AudioPlayer({ src, title, audioRef }: AudioPlayerProps) {
+export default function AudioPlayer({ src, title, audioRef, albumArt, episodeTitle, episodeDate, showName, spotifyUrl }: AudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -51,15 +56,11 @@ export default function AudioPlayer({ src, title, audioRef }: AudioPlayerProps) 
         } else {
           const playPromise = audioRef.current.play();
           if (playPromise !== undefined) {
-            playPromise.catch(error => {
-              console.error('Error playing audio:', error);
-              setError('Error playing audio file');
-            });
+            playPromise.catch(() => setError('Error playing audio file'));
           }
         }
         setIsPlaying(!isPlaying);
-      } catch (error) {
-        console.error('Error in togglePlayPause:', error);
+      } catch {
         setError('Error controlling audio playback');
       }
     }
@@ -67,13 +68,13 @@ export default function AudioPlayer({ src, title, audioRef }: AudioPlayerProps) 
 
   const skipForward = () => {
     if (audioRef.current) {
-      audioRef.current.currentTime = Math.min(audioRef.current.currentTime + 5, duration);
+      audioRef.current.currentTime = Math.min(audioRef.current.currentTime + 15, duration);
     }
   };
 
   const skipBackward = () => {
     if (audioRef.current) {
-      audioRef.current.currentTime = Math.max(audioRef.current.currentTime - 5, 0);
+      audioRef.current.currentTime = Math.max(audioRef.current.currentTime - 15, 0);
     }
   };
 
@@ -119,137 +120,87 @@ export default function AudioPlayer({ src, title, audioRef }: AudioPlayerProps) 
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  // Placeholders if props are missing
+  const art = albumArt || 'https://via.placeholder.com/200x200?text=Podcast';
+  const epTitle = episodeTitle || 'Podcast Episode Title';
+  const epDate = episodeDate || 'Jan 1 · Show Name';
+  const show = showName || 'Show Name';
+  const spotify = spotifyUrl || '#';
+
+  // Handle click outside for speed menu
+  useEffect(() => {
+    if (!isSpeedMenuOpen) return;
+    function handleClick(e: MouseEvent) {
+      setIsSpeedMenuOpen(false);
+    }
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, [isSpeedMenuOpen]);
+
   return (
-    <div>
-      {title && <h3 className="text-lg font-semibold mb-4">{title}</h3>}
-      {isLoading && (
-        <div className="text-gray-500 mb-4">
-          Loading audio...
-        </div>
-      )}
-      {error && (
-        <div className="text-red-500 mb-4">
-          {error}
-        </div>
-      )}
+    <div className="bg-gray-700 rounded-2xl p-4 w-full max-w-4xl mx-auto shadow-lg flex flex-col justify-between min-h-[180px] relative">
+      {/* Hidden audio element */}
       <audio
         ref={audioRef}
         src={src}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={() => setIsPlaying(false)}
-        onError={(e) => {
-          const audioError = e.target as HTMLAudioElement;
-          console.error('Audio element error:', {
-            error: audioError.error,
-            networkState: audioError.networkState,
-            readyState: audioError.readyState
-          });
-          setError('Error loading audio file');
-          setIsLoading(false);
-        }}
       />
-      <div className="space-y-4">
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600 w-12">{formatTime(currentTime)}</span>
-          <input
-            type="range"
-            min={0}
-            max={duration}
-            value={currentTime}
-            onChange={handleProgressChange}
-            className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-          />
-          <span className="text-sm text-gray-600 w-12">{formatTime(duration)}</span>
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="relative">
-            <button
-              onClick={() => setIsVolumeMenuOpen(!isVolumeMenuOpen)}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-              disabled={isLoading}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-gray-600">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-              </svg>
-            </button>
-            {isVolumeMenuOpen && (
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-2 bg-white rounded-lg shadow-lg">
-                <input
-                  type="range"
-                  min={0}
-                  max={1}
-                  step={0.1}
-                  value={volume}
-                  onChange={handleVolumeChange}
-                  className="w-24 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer rotate-180"
-                  disabled={isLoading}
-                />
-              </div>
+      {/* Playback Speed Dropdown */}
+      <div className="absolute top-4 right-4 z-10">
+        <button
+          onClick={e => { e.stopPropagation(); setIsSpeedMenuOpen(v => !v); }}
+          className="bg-white/10 text-white px-3 py-1 rounded font-semibold text-sm shadow hover:bg-white/20"
+        >
+          {playbackRate}x
+        </button>
+        {isSpeedMenuOpen && (
+          <div className="absolute right-0 mt-2 w-20 bg-gray-800 rounded shadow-lg py-1 text-white text-sm">
+            {[0.5, 1, 1.25, 1.5, 2].map(rate => (
+              <button
+                key={rate}
+                onClick={e => { e.stopPropagation(); handlePlaybackRateChange(rate); }}
+                className={`block w-full text-left px-4 py-1 hover:bg-gray-700/60 ${playbackRate === rate ? 'font-bold' : ''}`}
+              >
+                {rate}x
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* Episode Info */}
+      <div className="mb-4">
+        <div className="uppercase text-white/80 text-xs tracking-widest font-semibold mb-1 text-left">{show}</div>
+        <h2 className="text-white text-lg md:text-xl font-bold text-left leading-tight">{epTitle}</h2>
+      </div>
+      {/* Controls */}
+      <div className="flex flex-col items-center justify-center flex-1">
+        <div className="flex items-center justify-center mb-4">
+          <button onClick={togglePlayPause} className="bg-white text-gray-700 rounded-full w-12 h-12 flex items-center justify-center shadow hover:scale-105 transition-transform text-2xl" disabled={isLoading} aria-label={isPlaying ? 'Pause' : 'Play'}>
+            {isPlaying ? (
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="#374151"/><rect x="14" y="4" width="4" height="16" rx="2" fill="#374151"/></svg>
+            ) : (
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="#374151"/></svg>
             )}
-          </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={skipBackward}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-              disabled={isLoading}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-              </svg>
-            </button>
-            <button
-              onClick={togglePlayPause}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-              disabled={isLoading}
-            >
-              {isPlaying ? (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                </svg>
-              )}
-            </button>
-            <button
-              onClick={skipForward}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-              disabled={isLoading}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" />
-              </svg>
-            </button>
-          </div>
-          <div className="relative w-24">
-            <button
-              onClick={() => setIsSpeedMenuOpen(!isSpeedMenuOpen)}
-              className="w-full px-2 py-1 text-sm text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors"
-              disabled={isLoading}
-            >
-              {playbackRate}x
-            </button>
-            {isSpeedMenuOpen && (
-              <div className="absolute right-0 mt-1 w-full bg-white rounded-lg shadow-lg py-1 z-10">
-                {[0.5, 1, 1.5, 2].map((rate) => (
-                  <button
-                    key={rate}
-                    onClick={() => handlePlaybackRateChange(rate)}
-                    className={`w-full px-2 py-1 text-sm text-left hover:bg-gray-100 ${
-                      playbackRate === rate ? 'text-gray-900 font-medium' : 'text-gray-600'
-                    }`}
-                    disabled={isLoading}
-                  >
-                    {rate}x
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          </button>
         </div>
       </div>
+      {/* Progress Bar */}
+      <div className="flex items-center gap-2 mt-4">
+        <span className="text-white/80 text-xs w-10 text-right">{formatTime(currentTime)}</span>
+        <input
+          type="range"
+          min={0}
+          max={duration}
+          value={currentTime}
+          onChange={handleProgressChange}
+          className="flex-1 h-1 bg-white/40 rounded-lg appearance-none cursor-pointer accent-white"
+        />
+        <span className="text-white/80 text-xs w-10">{formatTime(duration)}</span>
+      </div>
+      {isLoading && <div className="text-white/70 mt-2 text-center text-xs">Loading audio...</div>}
+      {error && <div className="text-red-300 mt-2 text-center text-xs">{error}</div>}
     </div>
   );
 } 

@@ -36,7 +36,7 @@ const options = {
       }
       
       // Handle commonPitfalls
-      if (target.sys.contentType.sys.id === 'commonPitfalls') {
+      if (target.sys.contentType.sys.id === 'pitfallContainer') {
         return `
           <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
             <div class="flex">
@@ -48,7 +48,7 @@ const options = {
               <div class="ml-3">
                 <h3 class="text-sm font-medium text-red-800">${target.fields.title || 'Common Pitfall'}</h3>
                 <div class="mt-2 text-sm text-red-700 prose prose-sm">
-                  ${target.fields.content ? documentToHtmlString(target.fields.content as Document) : ''}
+                  ${target.fields.body ? documentToHtmlString(target.fields.body as Document) : ''}
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@ const options = {
       }
       
       // Handle additionalResources
-      if (target.sys.contentType.sys.id === 'additionalResources') {
+      if (target.sys.contentType.sys.id === 'additionalResourceContainer') {
         return `
           <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
             <div class="flex">
@@ -68,8 +68,9 @@ const options = {
               </div>
               <div class="ml-3">
                 <h3 class="text-sm font-medium text-green-800">${target.fields.title || 'Additional Resource'}</h3>
-                <div class="mt-2 text-sm text-green-700 prose prose-sm">
-                  ${target.fields.content ? documentToHtmlString(target.fields.content as Document) : ''}
+                <div class="mt-2 text-sm text-green-700">
+                  <span class="font-medium">${target.fields.category || 'Resource'}</span>
+                  ${target.fields.link ? `<a href="${target.fields.link}" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-800 underline ml-2">View Resource →</a>` : ''}
                 </div>
               </div>
             </div>
@@ -171,6 +172,7 @@ export default async function DeliveryFoundations() {
     if (page.fields.commonPitfalls) {
       console.log('Attempting to process commonPitfalls content...');
       if (typeof page.fields.commonPitfalls === 'object' && 'nodeType' in page.fields.commonPitfalls) {
+        // Use the same options object that handles embedded entries
         commonPitfalls = documentToHtmlString(page.fields.commonPitfalls as Document, options);
         console.log('Successfully processed commonPitfalls content:', commonPitfalls);
       } else {
@@ -190,6 +192,7 @@ export default async function DeliveryFoundations() {
     if (page.fields.additionalResources) {
       console.log('Attempting to process additionalResources content...');
       if (typeof page.fields.additionalResources === 'object' && 'nodeType' in page.fields.additionalResources) {
+        // Use the same options object that handles embedded entries
         additionalResources = documentToHtmlString(page.fields.additionalResources as Document, options);
         console.log('Successfully processed additionalResources content:', additionalResources);
       } else {

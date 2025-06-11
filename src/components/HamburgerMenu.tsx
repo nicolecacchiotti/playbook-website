@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface PlaybookPage {
@@ -15,11 +15,22 @@ interface HamburgerMenuProps {
 export default function HamburgerMenu({ pages }: HamburgerMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Debug log to check if pages are being passed correctly
+  useEffect(() => {
+    console.log('HamburgerMenu pages:', pages);
+  }, [pages]);
+
+  const handleMenuClick = () => {
+    console.log('Menu clicked, current state:', isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="fixed top-4 right-4 z-50">
       <button 
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={handleMenuClick}
         className="p-2 rounded-lg hover:bg-gray-200 transition-colors"
+        aria-label="Toggle menu"
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
@@ -39,7 +50,10 @@ export default function HamburgerMenu({ pages }: HamburgerMenuProps) {
 
       {/* Dropdown Menu */}
       {isMenuOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-2">
+        <div 
+          className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-2"
+          onClick={(e) => e.stopPropagation()}
+        >
           {pages.length === 0 && (
             <div className="px-4 py-2 text-gray-400">No playbooks found</div>
           )}
@@ -48,7 +62,10 @@ export default function HamburgerMenu({ pages }: HamburgerMenuProps) {
               key={page.slug}
               href={`/${page.slug}`}
               className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                console.log('Link clicked:', page.slug);
+                setIsMenuOpen(false);
+              }}
             >
               {page.title}
             </Link>

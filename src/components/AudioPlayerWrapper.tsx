@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import AudioPlayer from './AudioPlayer';
 
 interface AudioPlayerWrapperProps {
@@ -9,6 +9,7 @@ interface AudioPlayerWrapperProps {
 
 export default function AudioPlayerWrapper({ audioUrl }: AudioPlayerWrapperProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     console.log('AudioPlayerWrapper mounted with URL:', audioUrl);
@@ -26,9 +27,15 @@ export default function AudioPlayerWrapper({ audioUrl }: AudioPlayerWrapperProps
         })
         .then(blob => {
           console.log('Audio file blob in wrapper:', blob.type, blob.size);
+          // Create object URL for the audio
+          const objectUrl = URL.createObjectURL(blob);
+          if (audioRef.current) {
+            audioRef.current.src = objectUrl;
+          }
         })
         .catch(error => {
           console.error('Error fetching audio file in wrapper:', error);
+          setError('Error loading audio file');
         });
 
       audioRef.current.addEventListener('error', (e) => {
@@ -38,13 +45,19 @@ export default function AudioPlayerWrapper({ audioUrl }: AudioPlayerWrapperProps
           networkState: audioError.networkState,
           readyState: audioError.readyState
         });
+        setError('Error playing audio file');
       });
 
       audioRef.current.addEventListener('loadeddata', () => {
         console.log('Audio file loaded successfully in wrapper');
+        setError(null);
       });
     }
   }, [audioUrl]);
+
+  if (error) {
+    return <div className="text-red-500 p-4 bg-red-100 rounded-lg">{error}</div>;
+  }
 
   return (
     <AudioPlayer 
