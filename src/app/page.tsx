@@ -32,13 +32,13 @@ export default function Home() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-        <div className="bg-white p-8 rounded-lg shadow-md max-w-2xl w-full">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Error</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
+      <div className="min-h-screen bg-paper flex items-center justify-center p-4">
+        <div className="p-8 rounded-lg w-full max-w-2xl border-2 border-kraft bg-paper shadow-lg">
+          <h2 className="text-2xl font-bold text-orange mb-4">Error</h2>
+          <p className="text-ink/80 mb-4">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+            className="bg-blue text-paper px-4 py-2 rounded hover:bg-blue-dark transition-colors"
           >
             Try Again
           </button>
@@ -48,10 +48,10 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-5xl">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-6">Welcome to the Playbooks</h1>
-        <p className="text-gray-600">
+    <main className="min-h-screen bg-paper flex items-center justify-center p-4">
+      <div className="p-8 rounded-lg w-full max-w-5xl border-2 border-kraft bg-paper shadow-lg">
+        <h1 className="text-2xl font-heading font-medium text-ink mb-6">Welcome to the Playbooks</h1>
+        <p className="text-ink/80">
           Use the menu in the top right corner to navigate through the available playbooks.
         </p>
       </div>

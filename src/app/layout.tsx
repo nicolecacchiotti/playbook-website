@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import { client } from "@/lib/contentful";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -46,7 +49,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="font-segoe">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Be+Vietnam+Pro:wght@500&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-sans bg-paper text-ink min-h-screen bg-paper-texture">
         <HamburgerMenu pages={pages} />
         {children}
       </body>

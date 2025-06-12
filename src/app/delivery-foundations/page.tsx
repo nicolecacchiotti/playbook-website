@@ -17,16 +17,16 @@ const options = {
       // Handle playbookCallout
       if (target.sys.contentType.sys.id === 'playbookCallout') {
         return `
-          <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+          <div class="bg-blue-light/30 border-l-4 border-blue p-4 my-6">
             <div class="flex">
               <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="h-5 w-5 text-blue" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
                 </svg>
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-blue-800">${target.fields.title || 'Important Note'}</h3>
-                <div class="mt-2 text-sm text-blue-700 prose prose-sm">
+                <h3 class="text-sm font-medium text-blue-dark">${target.fields.title || 'Important Note'}</h3>
+                <div class="mt-2 text-sm text-blue-dark/80 prose prose-sm">
                   ${target.fields.content ? documentToHtmlString(target.fields.content as Document) : ''}
                 </div>
               </div>
@@ -38,16 +38,16 @@ const options = {
       // Handle commonPitfalls
       if (target.sys.contentType.sys.id === 'pitfallContainer') {
         return `
-          <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
+          <div class="bg-orange-light/30 border-l-4 border-orange p-4 my-6">
             <div class="flex">
               <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="h-5 w-5 text-orange" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                 </svg>
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-red-800">${target.fields.title || 'Common Pitfall'}</h3>
-                <div class="mt-2 text-sm text-red-700 prose prose-sm">
+                <h3 class="text-sm font-medium text-orange-dark">${target.fields.title || 'Common Pitfall'}</h3>
+                <div class="mt-2 text-sm text-orange-dark/80 prose prose-sm">
                   ${target.fields.body ? documentToHtmlString(target.fields.body as Document) : ''}
                 </div>
               </div>
@@ -59,18 +59,18 @@ const options = {
       // Handle additionalResources
       if (target.sys.contentType.sys.id === 'additionalResourceContainer') {
         return `
-          <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
+          <div class="bg-green-light/30 border-l-4 border-green p-4 my-6">
             <div class="flex">
               <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="h-5 w-5 text-green" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
                 </svg>
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-green-800">${target.fields.title || 'Additional Resource'}</h3>
-                <div class="mt-2 text-sm text-green-700">
+                <h3 class="text-sm font-medium text-green-dark">${target.fields.title || 'Additional Resource'}</h3>
+                <div class="mt-2 text-sm text-green-dark/80">
                   <span class="font-medium">${target.fields.category || 'Resource'}</span>
-                  ${target.fields.link ? `<a href="${target.fields.link}" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-800 underline ml-2">View Resource →</a>` : ''}
+                  ${target.fields.link ? `<a href="${target.fields.link}" target="_blank" rel="noopener noreferrer" class="text-green hover:text-green-dark underline ml-2">View Resource →</a>` : ''}
                 </div>
               </div>
             </div>
@@ -207,15 +207,15 @@ export default async function DeliveryFoundations() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
+    <main className="min-h-screen bg-[#FDF9F3] p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white p-8 rounded-lg shadow-md space-y-6">
+        <div className="p-8 rounded-lg space-y-6">
           <Breadcrumb title="Delivery Foundations" />
           <div>
-            <h1 className="text-3xl font-bold text-blue-800 mb-4">{title}</h1>
+            <h1 className="text-3xl font-heading font-medium text-ink mb-4">{title}</h1>
             {description ? (
               <div 
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-600 prose-ul:list-disc prose-ul:pl-6 prose-li:text-gray-600"
+                className="prose prose-lg max-w-none prose-headings:font-heading prose-headings:font-medium prose-headings:text-ink prose-p:text-ink/80 prose-ul:list-disc prose-ul:pl-6 prose-li:text-ink/80"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             ) : (
@@ -230,29 +230,29 @@ export default async function DeliveryFoundations() {
           )}
 
           {body && (
-            <div className="mt-12 border-t pt-8">
+            <div className="mt-12 border-t border-kraft pt-8">
               <div 
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-600 prose-ul:list-disc prose-ul:pl-6 prose-li:text-gray-600"
+                className="prose prose-lg max-w-none prose-headings:font-heading prose-headings:font-medium prose-headings:text-ink prose-p:text-ink/80 prose-ul:list-disc prose-ul:pl-6 prose-li:text-ink/80"
                 dangerouslySetInnerHTML={{ __html: body }}
               />
             </div>
           )}
 
           {commonPitfalls && (
-            <div className="mt-12 border-t pt-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Common Pitfalls</h2>
+            <div className="mt-12 border-t border-kraft pt-8">
+              <h2 className="text-2xl font-heading font-medium text-ink mb-6">Common Pitfalls</h2>
               <div 
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-600 prose-ul:list-disc prose-ul:pl-6 prose-li:text-gray-600"
+                className="prose prose-lg max-w-none prose-headings:font-heading prose-headings:font-medium prose-headings:text-ink prose-p:text-ink/80 prose-ul:list-disc prose-ul:pl-6 prose-li:text-ink/80"
                 dangerouslySetInnerHTML={{ __html: commonPitfalls }}
               />
             </div>
           )}
 
           {additionalResources && (
-            <div className="mt-12 border-t pt-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Additional Resources</h2>
+            <div className="mt-12 border-t border-kraft pt-8">
+              <h2 className="text-2xl font-heading font-medium text-ink mb-6">Additional Resources</h2>
               <div 
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-600 prose-ul:list-disc prose-ul:pl-6 prose-li:text-gray-600"
+                className="prose prose-lg max-w-none prose-headings:font-heading prose-headings:font-medium prose-headings:text-ink prose-p:text-ink/80 prose-ul:list-disc prose-ul:pl-6 prose-li:text-ink/80"
                 dangerouslySetInnerHTML={{ __html: additionalResources }}
               />
             </div>

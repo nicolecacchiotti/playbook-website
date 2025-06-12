@@ -47,13 +47,15 @@ export default function WaveformVisualizer({ audioRef, barCount = 48 }: Waveform
       className="flex items-end justify-center h-24 w-full gap-[2px] mt-8"
       style={{ minHeight: 48 }}
     >
-      {Array.from({ length: barCount }).map((_, i) => (
-        <div
-          key={i}
-          className="bg-green-400 rounded w-[3px] transition-all duration-75"
-          style={{ height: '10%' }}
-        />
-      ))}
+      <div className="flex items-center justify-center h-12 space-x-[2px]">
+        {Array.from({ length: barCount }).map((_, i) => (
+          <div
+            key={i}
+            className="bg-blue rounded w-[3px] transition-all duration-75"
+            style={{ height: '10%' }}
+          />
+        ))}
+      </div>
     </div>
   );
 } 

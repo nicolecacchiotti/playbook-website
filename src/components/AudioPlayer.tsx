@@ -23,6 +23,7 @@ export default function AudioPlayer({ src, title, audioRef, albumArt, episodeTit
   const [isVolumeMenuOpen, setIsVolumeMenuOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPlaybackRateOpen, setIsPlaybackRateOpen] = useState(false);
 
   useEffect(() => {
     console.log('AudioPlayer mounted with src:', src);
@@ -30,6 +31,11 @@ export default function AudioPlayer({ src, title, audioRef, albumArt, episodeTit
     setError(null);
 
     if (audioRef.current) {
+      audioRef.current.addEventListener('canplay', () => {
+        console.log('Audio can play');
+        setIsLoading(false);
+      });
+
       audioRef.current.addEventListener('loadeddata', () => {
         console.log('Audio file loaded successfully');
         setIsLoading(false);
@@ -45,6 +51,22 @@ export default function AudioPlayer({ src, title, audioRef, albumArt, episodeTit
         setError('Error loading audio file');
         setIsLoading(false);
       });
+
+      const timeoutId = setTimeout(() => {
+        if (isLoading) {
+          console.log('Audio loading timeout - forcing play state');
+          setIsLoading(false);
+        }
+      }, 10000);
+
+      return () => {
+        clearTimeout(timeoutId);
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('canplay', () => {});
+          audioRef.current.removeEventListener('loadeddata', () => {});
+          audioRef.current.removeEventListener('error', () => {});
+        }
+      };
     }
   }, [src, audioRef]);
 
@@ -138,30 +160,25 @@ export default function AudioPlayer({ src, title, audioRef, albumArt, episodeTit
   }, [isSpeedMenuOpen]);
 
   return (
-    <div className="bg-gray-700 rounded-2xl p-4 w-full max-w-4xl mx-auto shadow-lg flex flex-col justify-between min-h-[180px] relative">
-      {/* Hidden audio element */}
-      <audio
-        ref={audioRef}
-        src={src}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleLoadedMetadata}
-        onEnded={() => setIsPlaying(false)}
-      />
-      {/* Playback Speed Dropdown */}
-      <div className="absolute top-4 right-4 z-10">
+    <div className="bg-ink rounded-2xl p-4 w-full max-w-4xl mx-auto shadow-lg flex flex-col justify-between min-h-[180px] relative">
+      {/* Playback Rate Dropdown */}
+      <div className="absolute top-4 right-4">
         <button
-          onClick={e => { e.stopPropagation(); setIsSpeedMenuOpen(v => !v); }}
-          className="bg-white/10 text-white px-3 py-1 rounded font-semibold text-sm shadow hover:bg-white/20"
+          onClick={() => setIsPlaybackRateOpen(!isPlaybackRateOpen)}
+          className="bg-paper/10 text-paper px-3 py-1 rounded font-medium text-sm shadow hover:bg-paper/20"
         >
           {playbackRate}x
         </button>
-        {isSpeedMenuOpen && (
-          <div className="absolute right-0 mt-2 w-20 bg-gray-800 rounded shadow-lg py-1 text-white text-sm">
-            {[0.5, 1, 1.25, 1.5, 2].map(rate => (
+        {isPlaybackRateOpen && (
+          <div className="absolute right-0 mt-2 w-20 bg-ink/90 rounded shadow-lg py-1 text-paper text-sm">
+            {[0.5, 1, 1.5, 2].map((rate) => (
               <button
                 key={rate}
-                onClick={e => { e.stopPropagation(); handlePlaybackRateChange(rate); }}
-                className={`block w-full text-left px-4 py-1 hover:bg-gray-700/60 ${playbackRate === rate ? 'font-bold' : ''}`}
+                onClick={() => {
+                  setPlaybackRate(rate);
+                  setIsPlaybackRateOpen(false);
+                }}
+                className={`block w-full text-left px-4 py-1 hover:bg-ink/60 ${playbackRate === rate ? 'font-bold' : ''}`}
               >
                 {rate}x
               </button>
@@ -169,38 +186,41 @@ export default function AudioPlayer({ src, title, audioRef, albumArt, episodeTit
           </div>
         )}
       </div>
+
       {/* Episode Info */}
-      <div className="mb-4">
-        <div className="uppercase text-white/80 text-xs tracking-widest font-semibold mb-1 text-left">{show}</div>
-        <h2 className="text-white text-lg md:text-xl font-bold text-left leading-tight">{epTitle}</h2>
+      <div className="flex-1">
+        <div className="uppercase text-paper/80 text-xs tracking-widest font-medium mb-1 text-left">{show}</div>
+        <h2 className="text-paper text-lg md:text-xl font-bold text-left leading-tight">{epTitle}</h2>
       </div>
+
       {/* Controls */}
-      <div className="flex flex-col items-center justify-center flex-1">
-        <div className="flex items-center justify-center mb-4">
-          <button onClick={togglePlayPause} className="bg-white text-gray-700 rounded-full w-12 h-12 flex items-center justify-center shadow hover:scale-105 transition-transform text-2xl" disabled={isLoading} aria-label={isPlaying ? 'Pause' : 'Play'}>
-            {isPlaying ? (
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="#374151"/><rect x="14" y="4" width="4" height="16" rx="2" fill="#374151"/></svg>
-            ) : (
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="#374151"/></svg>
-            )}
-          </button>
+      <div className="flex items-center space-x-4 mt-4">
+        <button onClick={togglePlayPause} className="bg-paper text-ink rounded-full w-12 h-12 flex items-center justify-center shadow hover:scale-105 transition-transform text-2xl" disabled={isLoading} aria-label={isPlaying ? 'Pause' : 'Play'}>
+          {isLoading ? (
+            <div className="w-6 h-6 border-2 border-ink border-t-transparent rounded-full animate-spin"></div>
+          ) : isPlaying ? (
+            <span>⏸</span>
+          ) : (
+            <span>▶</span>
+          )}
+        </button>
+
+        <div className="flex-1 flex items-center space-x-2">
+          <span className="text-paper/80 text-xs w-10 text-right">{formatTime(currentTime)}</span>
+          <input
+            type="range"
+            min="0"
+            max={duration || 0}
+            value={currentTime}
+            onChange={handleProgressChange}
+            className="flex-1 h-1 bg-paper/40 rounded-lg appearance-none cursor-pointer accent-paper"
+          />
+          <span className="text-paper/80 text-xs w-10">{formatTime(duration)}</span>
         </div>
       </div>
-      {/* Progress Bar */}
-      <div className="flex items-center gap-2 mt-4">
-        <span className="text-white/80 text-xs w-10 text-right">{formatTime(currentTime)}</span>
-        <input
-          type="range"
-          min={0}
-          max={duration}
-          value={currentTime}
-          onChange={handleProgressChange}
-          className="flex-1 h-1 bg-white/40 rounded-lg appearance-none cursor-pointer accent-white"
-        />
-        <span className="text-white/80 text-xs w-10">{formatTime(duration)}</span>
-      </div>
-      {isLoading && <div className="text-white/70 mt-2 text-center text-xs">Loading audio...</div>}
-      {error && <div className="text-red-300 mt-2 text-center text-xs">{error}</div>}
+
+      {isLoading && <div className="text-paper/70 mt-2 text-center text-xs">Loading audio...</div>}
+      {error && <div className="text-orange mt-2 text-center text-xs">{error}</div>}
     </div>
   );
 } 
