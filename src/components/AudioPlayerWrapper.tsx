@@ -1,69 +1,117 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import AudioPlayer from './AudioPlayer';
+import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface AudioPlayerWrapperProps {
   audioUrl: string;
+  imageSrc: any; // Accept imported SVG or image
 }
 
-export default function AudioPlayerWrapper({ audioUrl }: AudioPlayerWrapperProps) {
+export default function AudioPlayerWrapper({ audioUrl, imageSrc }: AudioPlayerWrapperProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log('AudioPlayerWrapper mounted with URL:', audioUrl);
-    if (audioRef.current) {
-      console.log('Audio element:', audioRef.current);
-      
-      // Test if the audio file is accessible
-      fetch(audioUrl)
-        .then(response => {
-          console.log('Audio file fetch response in wrapper:', response.status, response.statusText);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.blob();
-        })
-        .then(blob => {
-          console.log('Audio file blob in wrapper:', blob.type, blob.size);
-          // Create object URL for the audio
-          const objectUrl = URL.createObjectURL(blob);
-          if (audioRef.current) {
-            audioRef.current.src = objectUrl;
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching audio file in wrapper:', error);
-          setError('Error loading audio file');
-        });
-
-      audioRef.current.addEventListener('error', (e) => {
-        const audioError = e.target as HTMLAudioElement;
-        console.error('Audio error in wrapper:', {
-          error: audioError.error,
-          networkState: audioError.networkState,
-          readyState: audioError.readyState
-        });
-        setError('Error playing audio file');
-      });
-
-      audioRef.current.addEventListener('loadeddata', () => {
-        console.log('Audio file loaded successfully in wrapper');
-        setError(null);
-      });
-    }
+    setIsLoading(true);
+    setError(null);
+    setCurrentTime(0);
+    setDuration(0);
+    setIsPlaying(false);
   }, [audioUrl]);
 
-  if (error) {
-    return <div className="text-red-500 p-4 bg-red-100 rounded-lg">{error}</div>;
-  }
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+      setIsLoading(false);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
+  };
+
+  const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const time = Number(e.target.value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+    }
+  };
+
+  const togglePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(() => setError('Error playing audio file'));
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   return (
-    <AudioPlayer 
-      src={audioUrl}
-      title=""
-      audioRef={audioRef}
-    />
+    <div className="bg-white rounded-2xl shadow-lg p-4 w-full max-w-md mx-auto flex flex-col items-center">
+      {/* Image at the top */}
+      <div className="w-full mb-4">
+        <Image
+          src={imageSrc}
+          alt="Audio Art"
+          width={320}
+          height={320}
+          className="rounded-lg object-cover w-full h-80"
+        />
+      </div>
+      {/* Hidden audio element */}
+      <audio
+        ref={audioRef}
+        src={audioUrl}
+        onLoadedMetadata={handleLoadedMetadata}
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={() => setIsPlaying(false)}
+        className="hidden"
+      />
+      {/* Progress Bar */}
+      <div className="flex items-center w-full gap-2">
+        <span className="text-gray-500 text-xs w-10 text-right">{formatTime(currentTime)}</span>
+        <input
+          type="range"
+          min={0}
+          max={duration}
+          value={currentTime}
+          onChange={handleProgressChange}
+          className="flex-1 h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
+          style={{ accentColor: '#3b82f6' }} // Tailwind blue-500
+        />
+        <span className="text-gray-500 text-xs w-10">{formatTime(duration)}</span>
+      </div>
+      {/* Play/Pause Button */}
+      <button
+        onClick={togglePlayPause}
+        className="mt-6 bg-blue-500 hover:bg-blue-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+        aria-label={isPlaying ? 'Pause' : 'Play'}
+        disabled={isLoading}
+      >
+        {isPlaying ? (
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="white"/><rect x="14" y="4" width="4" height="16" rx="2" fill="white"/></svg>
+        ) : (
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="white"/></svg>
+        )}
+      </button>
+      {isLoading && <div className="text-gray-400 mt-2 text-center text-xs">Loading audio...</div>}
+      {error && <div className="text-red-500 mt-2 text-center text-xs">{error}</div>}
+    </div>
   );
 } 

@@ -1,26 +1,42 @@
 import Link from 'next/link';
+import {
+  Breadcrumb as Shadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 
 interface BreadcrumbProps {
+  section?: string;
   title: string;
 }
 
-export default function Breadcrumb({ title }: BreadcrumbProps) {
+export default function Breadcrumb({ section, title }: BreadcrumbProps) {
   return (
-    <nav className="flex" aria-label="Breadcrumb">
-      <ol className="flex items-center space-x-2">
-        <li>
-          <Link 
-            href="/" 
-            className="text-gray-500 hover:text-gray-700 transition-colors"
-          >
-            Home
-          </Link>
-        </li>
-        <li className="flex items-center space-x-2">
-            <span className="text-gray-400">/</span>
-          <span className="text-gray-900 font-medium">{title}</span>
-          </li>
-      </ol>
-    </nav>
+    <Shadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link href="/">Home</Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        {section && (
+          <>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href={`/${section.toLowerCase().replace(/ /g, '-')}`}>{section}</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </>
+        )}
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>{title}</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Shadcrumb>
   );
 } 
