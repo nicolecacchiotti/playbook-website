@@ -63,7 +63,7 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc }: AudioPlayerWr
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 w-full max-w-md mx-auto flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       {/* Image at the top */}
       <div className="w-full mb-4">
         <Image
