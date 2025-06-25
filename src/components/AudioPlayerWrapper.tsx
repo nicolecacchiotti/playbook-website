@@ -64,7 +64,7 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc }: AudioPlayerWr
 
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Image at the top */}
+      {/* Image with Play Button overlay */}
       <div className="w-full mb-4">
         <Image
           src={imageSrc}
@@ -84,7 +84,19 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc }: AudioPlayerWr
         className="hidden"
       />
       {/* Progress Bar */}
-      <div className="flex items-center w-full gap-2">
+      <div className="flex items-center w-full gap-2 mt-2">
+        <button
+          onClick={togglePlayPause}
+          className="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+          aria-label={isPlaying ? 'Pause' : 'Play'}
+          disabled={isLoading}
+        >
+          {isPlaying ? (
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="white"/><rect x="14" y="4" width="4" height="16" rx="2" fill="white"/></svg>
+          ) : (
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="white"/></svg>
+          )}
+        </button>
         <span className="text-gray-500 text-xs w-10 text-right">{formatTime(currentTime)}</span>
         <input
           type="range"
@@ -97,19 +109,6 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc }: AudioPlayerWr
         />
         <span className="text-gray-500 text-xs w-10">{formatTime(duration)}</span>
       </div>
-      {/* Play/Pause Button */}
-      <button
-        onClick={togglePlayPause}
-        className="mt-6 bg-blue-500 hover:bg-blue-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-        aria-label={isPlaying ? 'Pause' : 'Play'}
-        disabled={isLoading}
-      >
-        {isPlaying ? (
-          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="white"/><rect x="14" y="4" width="4" height="16" rx="2" fill="white"/></svg>
-        ) : (
-          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="white"/></svg>
-        )}
-      </button>
       {isLoading && <div className="text-gray-400 mt-2 text-center text-xs">Loading audio...</div>}
       {error && <div className="text-red-500 mt-2 text-center text-xs">{error}</div>}
     </div>
