@@ -6,6 +6,7 @@ import SecondaryTabNav from '@/components/SecondaryTabNav';
 import BlueCard from '@/components/BlueCard';
 import RedCard from '@/components/RedCard';
 import GreenCard from '@/components/GreenCard';
+import ResourceCard from '@/components/ResourceCard';
 import { useState } from 'react';
 import { Lightbulb, ListCheck } from 'lucide-react';
 
@@ -227,7 +228,7 @@ export default function DeliveryFoundationsPage() {
           )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
-              <h2 className="text-xl font-semibold mb-4">Common Pitfalls</h2>
+              <h2 className="text-xl font-semibold mb-2">Common Pitfalls</h2>
               <RedCard
                 header="Failing to Account for Extra Responsibilities"
                 body="Expect longer schedules - a team with no product and/or project lead will progress slower than a team with these roles assigned.  More work divided among fewer people requires more time."
@@ -241,6 +242,25 @@ export default function DeliveryFoundationsPage() {
                 header="Poor Communication and Coordination"
                 body="A PL often acts as a key liaison between various stakeholders. Without this role, miscommunication or gaps in coordination can arise, leading to misunderstandings about project scope, priorities, or deliverables. This can result in rework, scope creep, or client dissatisfaction."
               />
+              <div className="mt-10">
+                <h2 className="text-xl font-semibold mb-2">Resources</h2>
+                <ResourceCard
+                  name="Doing Without Delivery Leads (Figma Whiteboard)"
+                  link="https://www.figma.com/file/yy0AtV5d6jF0BS4hQey8gr/Doing-Without-Delivery-Leads?type=whiteboard&node-id=0%3A1&t=Vcoub0fCSXgfzbMd-1"
+                />
+                <ResourceCard
+                  name="Triforce Responsibilities Matrix"
+                  link="https://trello.com/invite/b/670fe91095ef4115c1ca0914/ATTI842f4b9a6c1a81247414d6574dbe853a4ECAE490/triforce-responsibility-matrix"
+                />
+                <ResourceCard
+                  name="Norming Sessions"
+                  link="https://willowtree.atlassian.net/wiki/spaces/DPPC/pages/2523168790/Playbook+Team+Formation"
+                />
+                <ResourceCard
+                  name="Client Kickoff"
+                  link="https://willowtree.atlassian.net/wiki/spaces/DPPC/pages/2523168790/Playbook+Team+Formation"
+                />
+              </div>
             </div>
           )}
         </div>
