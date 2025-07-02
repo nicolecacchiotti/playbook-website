@@ -6,6 +6,7 @@ import SecondaryTabNav from '@/components/SecondaryTabNav';
 import BlueCard from '@/components/BlueCard';
 import RedCard from '@/components/RedCard';
 import GreenCard from '@/components/GreenCard';
+import ResourceCard from '@/components/ResourceCard';
 import { useState } from 'react';
 import { Lightbulb, ListCheck } from 'lucide-react';
 
@@ -23,14 +24,16 @@ export default function DeliveryFoundationsPage() {
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>Delivery responsibilities span four key areas: client, project, product, and team. When a delivery lead is not assigned, Delivery Foundations offers guidance to help others fulfill these roles and ensure smooth project management. This play primarily focuses on delivery for Design and Discovery projects.</p>
           <AudioPlayerWrapper audioUrl={audioUrl} imageSrc={deliveryFoundationsArt} />
-          <SecondaryTabNav tabs={['Overview', 'Planning & Prep', 'How to run the play', 'Support']} selectedTab={selectedTab} onTabChange={setSelectedTab} />
+          <div className="mt-10">
+            <SecondaryTabNav tabs={['Overview', 'Planning & Prep', 'How to run the play', 'Support']} selectedTab={selectedTab} onTabChange={setSelectedTab} />
+          </div>
           {selectedTab === 0 && (
             <div className="mt-8" id="overview-content">
               <h2 className="text-xl font-semibold mb-2">Why to use this play</h2>
-              <p className="text-gray-700 mb-2">
+              <p className="text-gray-700 mb-2" style={{ fontSize: '14px' }}>
                 Non-delivery roles should be familiar with delivery concepts, terminology, and processes (they do NOT need to memorize them). It's important non-delivery leads are aware of key tools like Jira and backlogs, as well as ceremonies like refinement sessions. This knowledge helps manage both customer expectations and personal workloads, ensuring they don't become overcommitted. Feeling comfortable with these aspects will contribute to smoother project coordination and better alignment with delivery teams, especially when a specific delivery lead is not assigned.
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700" style={{ fontSize: '14px' }}>
                 You won't need everything here when managing your project, but use this as a flexible guide to explore the tools and practices that best support your project.
               </p>
               <GreenCard
@@ -38,7 +41,7 @@ export default function DeliveryFoundationsPage() {
               />
               <div className="mt-10">
                 <h2 className="text-xl font-semibold mb-2">When to use this play</h2>
-                <ol className="list-decimal list-inside space-y-4 text-gray-700">
+                <ol className="list-decimal list-inside space-y-4 text-gray-700" style={{ fontSize: '14px' }}>
                   <li>
                     <span className="font-semibold">At the beginning of a new engagement:</span> At the start of a project the leads should review the agreed upon scope, including client outcome & timeline expectations. Non-delivery leads should make sure their schedule estimates account for more time needed to manage delivery activities normally owned by delivery leads.
                   </li>
@@ -75,8 +78,8 @@ export default function DeliveryFoundationsPage() {
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
               <h2 className="text-xl font-semibold mb-2">Become Familiar with Key Delivery Responsibilities</h2>
-              <p className="text-gray-700 mb-4">Key Delivery responsibilities focus on 4 areas:&nbsp;</p>
-              <ol className="list-decimal list-inside space-y-4 text-gray-700">
+              <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>Key Delivery responsibilities focus on 4 areas:&nbsp;</p>
+              <ol className="list-decimal list-inside space-y-4 text-gray-700" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Client:</span> Understanding the client's needs, expectations, and business objectives is essential. Clear and regular communication ensures the client stays informed about progress, issues, and decisions that impact the product. Designate a point person to manage weekly executive reports or status updates, potential barriers, and milestones and help maintain satisfaction for a strong, long-term relationship.
                 </li>
@@ -109,7 +112,7 @@ export default function DeliveryFoundationsPage() {
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
               <h2 className="text-xl font-semibold mb-2">How to run the play</h2>
-              <ol className="list-decimal list-inside space-y-6 text-gray-700">
+              <ol className="list-decimal list-inside space-y-6 text-gray-700" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Salesforce Delivery Basics</span> <br/>
                   At the start of every project, it must be added to Salesforce for record keeping and tracking. Reference the following confluence pages if you are responsible for setting up the Salesforce project for your team:
@@ -227,7 +230,7 @@ export default function DeliveryFoundationsPage() {
           )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
-              <h2 className="text-xl font-semibold mb-4">Common Pitfalls</h2>
+              <h2 className="text-xl font-semibold">Common Pitfalls</h2>
               <RedCard
                 header="Failing to Account for Extra Responsibilities"
                 body="Expect longer schedules - a team with no product and/or project lead will progress slower than a team with these roles assigned.  More work divided among fewer people requires more time."
@@ -241,6 +244,28 @@ export default function DeliveryFoundationsPage() {
                 header="Poor Communication and Coordination"
                 body="A PL often acts as a key liaison between various stakeholders. Without this role, miscommunication or gaps in coordination can arise, leading to misunderstandings about project scope, priorities, or deliverables. This can result in rework, scope creep, or client dissatisfaction."
               />
+              
+              <div className="mt-10">
+                <h2 className="text-xl font-semibold mb-4">Resources</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <ResourceCard
+                    title="Doing Without Delivery Leads (Figma Whiteboard)"
+                    href="https://www.figma.com/file/yy0AtV5d6jF0BS4hQey8gr/Doing-Without-Delivery-Leads?type=whiteboard&node-id=0%3A1&t=Vcoub0fCSXgfzbMd-1"
+                  />
+                  <ResourceCard
+                    title="Triforce Responsibilities Matrix (Trello)"
+                    href="https://trello.com/invite/b/670fe91095ef4115c1ca0914/ATTI842f4b9a6c1a81247414d6574dbe853a4ECAE490/triforce-responsibility-matrix"
+                  />
+                  <ResourceCard
+                    title="Norming Sessions (Atlassian)"
+                    href="https://willowtree.atlassian.net/wiki/spaces/DPPC/pages/2523168790/Playbook+Team+Formation"
+                  />
+                  <ResourceCard
+                    title="Client Kickoff (Atlassian)"
+                    href="https://willowtree.atlassian.net/wiki/spaces/DPPC/pages/1874395147/Playbook+Project+Kickoff"
+                  />
+                </div>
+              </div>
             </div>
           )}
         </div>
