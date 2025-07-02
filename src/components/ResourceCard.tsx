@@ -1,25 +1,23 @@
-import React from 'react';
 import { SquareArrowOutUpRight } from 'lucide-react';
 
 interface ResourceCardProps {
-  name: string;
-  link: string;
+  title: string;
+  href: string;
 }
 
-const ResourceCard: React.FC<ResourceCardProps> = ({ name, link }) => (
-  <div className="bg-[#F5FAFF] rounded-lg shadow p-4 flex items-center justify-between mt-4">
-    <span className="text-black text-base">{name}</span>
-    <a
-      href={link}
+export default function ResourceCard({ title, href }: ResourceCardProps) {
+  return (
+    <a 
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="ml-3"
+      className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:bg-gray-100 transition-colors relative"
+      aria-label={`Open ${title} in new tab`}
     >
-      <span className="inline-flex items-center justify-center rounded-md bg-[#E0F0FF] w-10 h-10">
-        <SquareArrowOutUpRight className="w-4 h-4 text-blue-700" />
-      </span>
+      <div className="flex items-center justify-between">
+        <h3 className="font-medium text-gray-900" style={{ fontSize: '14px' }}>{title}</h3>
+        <SquareArrowOutUpRight className="w-5 h-5 text-blue-600" />
+      </div>
     </a>
-  </div>
-);
-
-export default ResourceCard; 
+  );
+}
