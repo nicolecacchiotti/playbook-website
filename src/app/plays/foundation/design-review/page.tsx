@@ -89,6 +89,14 @@ export default function DesignReviewPage() {
                 <span className="font-semibold">Note:</span> The duration allocated to each agenda item can be adjusted based on the complexity and importance of the discussion. It is essential to maintain a productive and inclusive atmosphere throughout the meeting, allowing all participants to contribute their ideas and perspectives.
               </p>
 
+              <div className="mb-6">
+                <GreenCard
+                  header="AI Prompt Idea"
+                  body="Suggest a creative icebreaker for designers when meeting a banking client for the first time"
+                  icon={<Lightbulb className="w-6 h-6 text-green-700 mb-2" />}
+                />
+              </div>
+
               <ol className="list-decimal list-inside space-y-6 text-gray-700" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Welcome and Introduction (5 minutes):</span> Start the meeting by welcoming all participants and introducing the purpose of the meeting. Briefly mention the importance of the new feature and its potential impact on the product.
@@ -118,25 +126,35 @@ export default function DesignReviewPage() {
             </div>
           )}
           {selectedTab === 2 && (
-            <BlueCard
-              header="When You're Done"
-              body=""
-              icon={<ListCheck className="w-6 h-6 text-blue-700 mb-2" />}
-            >
-              <div style={{ fontSize: '14px' }}>
-                <p className="mb-4 text-gray-700">
-                  <span className="font-semibold">Post design review:</span> Shortly after your design review, circulate an email to all the attendees and stakeholders that briefly recaps the decisions, next steps and open questions following the review. This is a good opportunity to let stakeholders know what the next meeting will entail and to set expectations, e.g., "Next week, we'll be meeting on Thursday to review the revisions to component X and work to finalize the feature in our meeting."
-                </p>
-                
-                <p className="mb-4 text-gray-700">
-                  <span className="font-semibold">DRI's & dependencies:</span> DRI's for any action items discussed in the design review, such as who is responsible for getting specific information and by what date. Make sure your client and your internal team know if you are blocked from moving forward or finalizing a feature design.
-                </p>
-                
-                <p className="text-gray-700">
-                  <span className="font-semibold">Next steps:</span> Have a clear understanding of next steps and a planned date to have them completed. Promptly email out your design review documentation (within a day). Include next steps, blockers and the date of the next review.
-                </p>
+            <div>
+              <BlueCard
+                header="When You're Done"
+                body=""
+                icon={<ListCheck className="w-6 h-6 text-blue-700 mb-2" />}
+              >
+                <div style={{ fontSize: '14px' }}>
+                  <p className="mb-4 text-gray-700">
+                    <span className="font-semibold">Post design review:</span> Shortly after your design review, circulate an email to all the attendees and stakeholders that briefly recaps the decisions, next steps and open questions following the review. This is a good opportunity to let stakeholders know what the next meeting will entail and to set expectations, e.g., "Next week, we'll be meeting on Thursday to review the revisions to component X and work to finalize the feature in our meeting."
+                  </p>
+                  
+                  <p className="mb-4 text-gray-700">
+                    <span className="font-semibold">DRI's & dependencies:</span> DRI's for any action items discussed in the design review, such as who is responsible for getting specific information and by what date. Make sure your client and your internal team know if you are blocked from moving forward or finalizing a feature design.
+                  </p>
+                  
+                  <p className="text-gray-700">
+                    <span className="font-semibold">Next steps:</span> Have a clear understanding of next steps and a planned date to have them completed. Promptly email out your design review documentation (within a day). Include next steps, blockers and the date of the next review.
+                  </p>
+                </div>
+              </BlueCard>
+              
+              <div className="mt-6">
+                <GreenCard
+                  header="AI Prompt Idea"
+                  body="Draft a short and friendly recap email of the next steps after a design review (ex: iterating on feedback and revising designs), thank the participants and mention the date for our next review (ex: next Thursday). Mention that we need the client to gather any additional feature requirements by the next meeting."
+                  icon={<Lightbulb className="w-6 h-6 text-green-700 mb-2" />}
+                />
               </div>
-            </BlueCard>
+            </div>
           )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">

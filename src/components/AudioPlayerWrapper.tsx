@@ -86,7 +86,7 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
         <Image
           src={imageSrc}
           alt="Audio Art"
-          className="rounded-xl h-auto max-h-48 w-full md:w-auto object-contain"
+          className="rounded-xl h-auto max-h-48 w-full md:w-auto object-cover md:object-contain"
         />
       </div>
       {/* Content & Controls */}
