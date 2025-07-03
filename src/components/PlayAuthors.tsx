@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JohnMigliorisi from '@/../assets/Avatar images/JohnMigliorisi.png';
 import KenDabkowski from '@/../assets/Avatar images/KenDabkowski.png';
 import NicoleBaeder from '@/../assets/Avatar images/NicoleBaeder.png';
+import KarolinaWhitmore from '@/../assets/Avatar images/KarolinaWhitmore.png';
 
 interface Author {
   name: string;
@@ -9,7 +10,11 @@ interface Author {
   initials: string;
 }
 
-const authors: Author[] = [
+interface PlayAuthorsProps {
+  authors?: Author[];
+}
+
+const defaultAuthors: Author[] = [
   {
     name: "John Migliorisi",
     image: JohnMigliorisi,
@@ -27,7 +32,15 @@ const authors: Author[] = [
   }
 ];
 
-export default function PlayAuthors() {
+export const designReviewAuthors: Author[] = [
+  {
+    name: "Karolina Whitmore",
+    image: KarolinaWhitmore,
+    initials: "KW"
+  }
+];
+
+export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
       <div className="flex -space-x-2">
