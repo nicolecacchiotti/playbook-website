@@ -7,6 +7,7 @@ import BlueCard from '@/components/BlueCard';
 import RedCard from '@/components/RedCard';
 import GreenCard from '@/components/GreenCard';
 import ResourceCard from '@/components/ResourceCard';
+import PlayAuthors from '@/components/PlayAuthors';
 import { useState } from 'react';
 import { Lightbulb, ListCheck } from 'lucide-react';
 
@@ -21,6 +22,7 @@ export default function DeliveryFoundationsPage() {
       <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
         <Breadcrumb section={section} title={title} />
         <div className="mt-6 space-y-6">
+          <PlayAuthors />
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>Delivery responsibilities span four key areas: client, project, product, and team. When a delivery lead is not assigned, Delivery Foundations offers guidance to help others fulfill these roles and ensure smooth project management. This play primarily focuses on delivery for Design and Discovery projects.</p>
           <AudioPlayerWrapper audioUrl={audioUrl} imageSrc={deliveryFoundationsArt} />
