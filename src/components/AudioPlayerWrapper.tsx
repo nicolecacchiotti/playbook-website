@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 
 interface AudioPlayerWrapperProps {
@@ -27,43 +27,57 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
     setIsPlaying(false);
   }, [audioUrl]);
 
-  const handleLoadedMetadata = () => {
+  const handleLoadedMetadata = useCallback(() => {
     if (audioRef.current) {
       setAudioDuration(audioRef.current.duration);
       setIsLoading(false);
     }
-  };
+  }, []);
 
-  const handleTimeUpdate = () => {
+  const handleTimeUpdate = useCallback(() => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
     }
-  };
+  }, []);
 
-  const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProgressChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const time = Number(e.target.value);
     if (audioRef.current) {
       audioRef.current.currentTime = time;
       setCurrentTime(time);
     }
-  };
+  }, []);
 
-  const togglePlayPause = () => {
+  const togglePlayPause = useCallback(() => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play().catch(() => setError('Error playing audio file'));
+        audioRef.current.play().catch((err) => {
+          console.error('Audio play error:', err);
+          setError('Error playing audio file');
+        });
       }
       setIsPlaying(!isPlaying);
     }
-  };
+  }, [isPlaying]);
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
+  const handleError = useCallback(() => {
+    setError('Failed to load audio file');
+    setIsLoading(false);
+  }, []);
+
+  const handleEnded = useCallback(() => {
+    setIsPlaying(false);
+  }, []);
+
+  const formatTime = useMemo(() => {
+    return (time: number) => {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+  }, []);
 
   return (
     <div className="w-full rounded-2xl overflow-hidden flex flex-col md:flex-row bg-[#0D423C] shadow-lg">
@@ -72,7 +86,7 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
         <Image
           src={imageSrc}
           alt="Audio Art"
-          className="rounded-xl h-auto max-h-48 w-full md:w-auto object-contain"
+          className="rounded-xl h-auto max-h-48 w-full md:w-auto object-cover md:object-contain"
         />
       </div>
       {/* Content & Controls */}
@@ -128,8 +142,10 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
         src={audioUrl}
         onLoadedMetadata={handleLoadedMetadata}
         onTimeUpdate={handleTimeUpdate}
-        onEnded={() => setIsPlaying(false)}
+        onEnded={handleEnded}
+        onError={handleError}
         className="hidden"
+        preload="metadata"
       />
     </div>
   );
