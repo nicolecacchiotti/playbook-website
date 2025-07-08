@@ -14,7 +14,7 @@ import { Lightbulb, ListCheck } from 'lucide-react';
 export default function DesignReviewPage() {
   const title = "Design Review";
   const section = "Foundation";
-  const audioUrl = "/audio/Design Review Play.wav";
+  const audioUrl = "/audio/Design Review Play.m4a";
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (

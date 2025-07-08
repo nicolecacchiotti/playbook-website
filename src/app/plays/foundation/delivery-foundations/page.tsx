@@ -14,7 +14,7 @@ import { Lightbulb, ListCheck } from 'lucide-react';
 export default function DeliveryFoundationsPage() {
   const title = "Delivery Foundations";
   const section = "Foundation";
-  const audioUrl = "/audio/delivery-foundations-playbook.wav"; // Place the .wav file in public/audio/
+  const audioUrl = "/audio/Delivery-Foundations-Playbook.m4a";
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (

@@ -14,7 +14,7 @@ import { Lightbulb, ListCheck } from 'lucide-react';
 export default function DesignPlanPage() {
   const title = "Design Plan";
   const section = "Foundation";
-  const audioUrl = "/audio/The Design Plan_ Structure for Unforeseen Journeys.wav";
+  const audioUrl = "/audio/The Design Plan_ Structure for Unforeseen Journeys.m4a";
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
