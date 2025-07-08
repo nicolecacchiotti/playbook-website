@@ -1,10 +1,10 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import AudioPlayerWrapper from '@/components/AudioPlayerWrapper';
-import developerCollaborationArt from '@/../assets/Card Art/DesignHandoff.svg';
+import midjourneyArt from '@/../assets/Card Art/MidJourney.svg';
 
-export default function DeveloperCollaborationPage() {
-  const title = "Developer Collaboration";
-  const section = "Feature Design";
+export default function MidjourneyPage() {
+  const title = "Midjourney";
+  const section = "Toolbox";
   const audioUrl = ""; // No audio file yet
 
   return (
@@ -13,13 +13,13 @@ export default function DeveloperCollaborationPage() {
         <Breadcrumb section={section} title={title} />
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-          <p>This is the page for Developer Collaboration.</p>
+          <p>This is the page for Midjourney.</p>
           {audioUrl && (
             <AudioPlayerWrapper 
               audioUrl={audioUrl} 
-              imageSrc={developerCollaborationArt} 
-              title="Developer Collaboration"
-              labels={['Development', 'Collaboration']}
+              imageSrc={midjourneyArt} 
+              title="Midjourney"
+              labels={['AI', 'Design']}
             />
           )}
         </div>
