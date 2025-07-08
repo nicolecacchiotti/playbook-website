@@ -1,0 +1,97 @@
+---
+description: 
+globs: .tsx
+alwaysApply: false
+---
+---
+description: TypeScript Component Standards
+globs: *.tsx
+---
+# TypeScript Component Standards
+
+Standards for React TypeScript component creation and structure.
+
+<rule>
+name: typescript_component_standards
+description: Enforces consistent TypeScript component structure and naming conventions
+
+filters:
+  - type: file_extension
+    pattern: "\\.tsx$"
+  - type: path
+    pattern: "^src/.*"
+  - type: content
+    pattern: "(?s)import.*React.*from.*'react'"
+
+actions:
+  - type: suggest
+    conditions:
+      - pattern: "^(?!.*Screen\\.tsx$|.*Component\\.tsx$)"
+        message: "Component files should end with Screen.tsx for screens or Component.tsx for components"
+    
+  - type: suggest
+    message: |
+      When creating TypeScript components:
+
+      1. File Naming:
+         - Screen components: `MyScreen.tsx`
+         - Reusable components: `MyComponent.tsx`
+         - Use PascalCase for component names
+
+      2. Component Structure:
+         ```typescript
+         import React from 'react';
+         import { View, Text } from 'react-native';
+         import { useAppTheme } from '../hooks/useAppTheme';
+         import { cn } from '../utils/tw';
+
+         interface MyComponentProps {
+           // Props interface
+         }
+
+         export const MyComponent: React.FC<MyComponentProps> = ({ 
+           // Destructured props
+         }) => {
+           // Hooks
+           const { getClass } = useAppTheme();
+
+           // Component logic
+
+           return (
+             <View className={cn('...')}>
+               {/* Component JSX */}
+             </View>
+           );
+         };
+         ```
+
+      3. Component Organization:
+         - Import statements at the top
+         - Interface definitions
+         - Component declaration
+         - Hooks and state
+         - Helper functions
+         - Return statement with JSX
+
+      4. Styling:
+         - Use Tailwind classes with cn utility
+         - Group related styles
+         - Use theme-aware classes
+
+examples:
+  - input: |
+      // Bad
+      mycomponent.tsx
+      Component.tsx
+      MyComponentScreen.js
+
+      // Good
+      MyScreen.tsx
+      UserProfileComponent.tsx
+      NavigationScreen.tsx
+  - output: "Correctly named and structured TypeScript component"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

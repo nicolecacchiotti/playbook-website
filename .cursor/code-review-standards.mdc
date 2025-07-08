@@ -1,0 +1,131 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Code Review Standards
+
+This rule defines our standards for code reviews, with a strong emphasis on test quality and coverage.
+
+<rule>
+name: code_review_standards
+description: Defines standards for code reviews with focus on test quality
+
+filters:
+  - type: event
+    pattern: "pull_request_created"
+
+actions:
+  - type: suggest
+    message: |
+      ## Code Review Standards
+
+      When reviewing code, please ensure the following standards are met:
+
+      ### 1. Functionality
+      - [ ] The code implements the requirements correctly
+      - [ ] Edge cases are handled appropriately
+      - [ ] Error handling is robust and user-friendly
+
+      ### 2. Code Quality
+      - [ ] Code follows our style guidelines and naming conventions
+      - [ ] No unnecessary complexity or over-engineering
+      - [ ] No code duplication; DRY principles are followed
+      - [ ] Performance considerations are addressed
+
+      ### 3. Testing (Critical)
+      - [ ] Tests are included for all new functionality
+      - [ ] Tests cover both happy paths and edge cases
+      - [ ] Tests are meaningful and not just testing implementation details
+      - [ ] Test coverage meets our minimum threshold (70%)
+      - [ ] For bug fixes, regression tests are included that would have caught the bug
+
+      ### 4. Documentation
+      - [ ] Code is well-commented where necessary
+      - [ ] Complex logic has explanatory comments
+      - [ ] API endpoints are documented
+      - [ ] README or other documentation is updated if needed
+
+      ### 5. Security
+      - [ ] No security vulnerabilities introduced
+      - [ ] Sensitive data is handled securely
+      - [ ] Input validation is present where needed
+
+      ### 6. Accessibility & UX (for UI changes)
+      - [ ] UI changes are accessible
+      - [ ] UX flows are intuitive
+      - [ ] Mobile responsiveness is maintained
+
+      ### Test Review Checklist
+      - [ ] Tests exist for new functionality
+      - [ ] Tests are well-structured and follow AAA pattern (Arrange, Act, Assert)
+      - [ ] Mocks and test doubles are used appropriately
+      - [ ] Tests are fast and don't have unnecessary dependencies
+      - [ ] Tests would catch regressions if the code were changed
+
+  - type: checklist
+    items:
+      - "Functionality meets requirements"
+      - "Code quality meets standards"
+      - "Tests are comprehensive and meaningful"
+      - "Documentation is sufficient"
+      - "No security concerns"
+      - "UI/UX is appropriate (if applicable)"
+
+examples:
+  - input: |
+      # New pull request: Add user profile editing feature
+    output: |
+      Thank you for submitting this pull request for the user profile editing feature. When reviewing this PR, please pay special attention to:
+
+      **Testing Focus:**
+      - Verify tests exist for:
+        - Successful profile updates
+        - Validation errors (e.g., invalid email format)
+        - Authorization checks (users can only edit their own profiles)
+        - Edge cases (e.g., concurrent edits)
+      
+      - Check test quality:
+        ```typescript
+        // Example of a good component test
+        describe('ProfileEditForm', () => {
+          it('should display validation error when email format is invalid', async () => {
+            // Arrange
+            render(<ProfileEditForm user={mockUser} />);
+            
+            // Act
+            const emailInput = screen.getByLabelText('Email');
+            fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
+            fireEvent.click(screen.getByText('Save'));
+            
+            // Assert
+            expect(await screen.findByText('Please enter a valid email')).toBeInTheDocument();
+            expect(mockUpdateProfile).not.toHaveBeenCalled();
+          });
+        });
+        
+        // Example of a good API test
+        describe('PUT /api/users/:id/profile', () => {
+          it('should return 403 when user tries to update another user\'s profile', async () => {
+            // Arrange
+            const token = generateTokenForUser(regularUser);
+            
+            // Act
+            const response = await request(app)
+              .put(`/api/users/${adminUser.id}/profile`)
+              .set('Authorization', `Bearer ${token}`)
+              .send({ name: 'New Name' });
+            
+            // Assert
+            expect(response.status).toBe(403);
+            expect(response.body.message).toContain('unauthorized');
+          });
+        });
+        ```
+
+      Remember that tests are as important as the implementation code itself. They ensure our features continue to work as expected as the codebase evolves.
+
+metadata:
+  priority: high
+  version: 1.0
+</rule> 
