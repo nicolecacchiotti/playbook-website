@@ -1,8 +1,11 @@
 import Breadcrumb from '@/components/Breadcrumb';
+import AudioPlayerWrapper from '@/components/AudioPlayerWrapper';
+import outcomesWorkshopArt from '@/../assets/Card Art/OutcomesWorkshop.svg';
 
-export default function Page() {
+export default function OutcomesWorkshopPage() {
   const title = "Outcomes Workshop";
   const section = "Immersion";
+  const audioUrl = ""; // No audio file yet
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -11,6 +14,14 @@ export default function Page() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Outcomes Workshop.</p>
+          {audioUrl && (
+            <AudioPlayerWrapper 
+              audioUrl={audioUrl} 
+              imageSrc={outcomesWorkshopArt} 
+              title="Outcomes Workshop"
+              labels={['Workshop', 'Strategy']}
+            />
+          )}
         </div>
       </div>
     </main>
