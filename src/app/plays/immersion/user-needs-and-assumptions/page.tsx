@@ -14,14 +14,13 @@ export default function UserNeedsAssumptionsPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for User Needs & Assumptions.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={userNeedsAssumptionsArt} 
               title="User Needs & Assumptions"
               labels={['Research', 'UX']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

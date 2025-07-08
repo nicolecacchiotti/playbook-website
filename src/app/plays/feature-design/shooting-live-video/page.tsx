@@ -14,14 +14,13 @@ export default function ShootingLiveVideoPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Shooting Live Video.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={shootingLiveVideoArt} 
               title="Shooting Live Video"
               labels={['Video', 'Production']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

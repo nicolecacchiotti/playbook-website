@@ -14,14 +14,13 @@ export default function ContentDesignCollaborationPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Content Design Collaboration.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={contentDesignCollaborationArt} 
               title="Content Design Collaboration"
               labels={['Content', 'Collaboration']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

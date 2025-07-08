@@ -14,14 +14,13 @@ export default function DesignSystemsPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Design Systems.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={designSystemsArt} 
               title="Design Systems"
               labels={['Design', 'Systems']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

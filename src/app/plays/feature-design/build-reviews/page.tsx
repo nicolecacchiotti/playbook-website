@@ -14,14 +14,13 @@ export default function BuildReviewsPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Build Reviews.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={buildReviewsArt} 
               title="Build Reviews"
               labels={['Development', 'Review']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

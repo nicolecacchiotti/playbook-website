@@ -14,14 +14,12 @@ export default function MentorshipForMentorsPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Mentorship for Mentors.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
-              audioUrl={audioUrl} 
-              imageSrc={mentorshipArt} 
-              title="Mentorship for Mentors"
-              labels={['Teams', 'Growth']}
-            />
-          )}
+          <AudioPlayerWrapper 
+            audioUrl={audioUrl} 
+            imageSrc={mentorshipArt} 
+            title="Mentorship for Mentors"
+            labels={['Teams', 'Growth']}
+          />
         </div>
       </div>
     </main>

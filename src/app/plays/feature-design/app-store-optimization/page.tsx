@@ -14,14 +14,13 @@ export default function AppStoreOptimizationPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for App Store Optimization.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={appStoreOptimizationArt} 
               title="App Store Optimization"
               labels={['Marketing', 'Optimization']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

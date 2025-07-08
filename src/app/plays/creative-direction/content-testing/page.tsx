@@ -14,14 +14,13 @@ export default function ContentTestingPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Content Testing.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={contentTestingArt} 
               title="Content Testing"
               labels={['Content', 'Testing']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

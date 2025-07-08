@@ -14,14 +14,13 @@ export default function ProjectOutbriefPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Project Outbrief.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={projectOutbriefArt} 
               title="Project Outbrief"
               labels={['Project', 'Documentation']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

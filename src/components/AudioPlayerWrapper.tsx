@@ -18,14 +18,18 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
   const [audioDuration, setAudioDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  
+  const hasAudio = audioUrl && audioUrl.trim() !== '';
 
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-    setCurrentTime(0);
-    setAudioDuration(0);
-    setIsPlaying(false);
-  }, [audioUrl]);
+    if (hasAudio) {
+      setIsLoading(true);
+      setError(null);
+      setCurrentTime(0);
+      setAudioDuration(0);
+      setIsPlaying(false);
+    }
+  }, [audioUrl, hasAudio]);
 
   const handleLoadedMetadata = useCallback(() => {
     if (audioRef.current) {
@@ -105,50 +109,56 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
         </div>
         {/* Title */}
         <h2 className="text-xl md:text-2xl font-bold mb-2 leading-tight">{title}</h2>
-        {/* Duration */}
-        <div className="text-gray-300 text-sm mb-6">
-          {audioDuration > 0 ? `${formatTime(audioDuration)} min` : (isLoading ? 'Loading...' : `${duration} min`)}
-        </div>
-        {/* Audio Controls */}
-        <div className="flex items-center gap-3 w-full">
-          <button
-            onClick={togglePlayPause}
-            className="bg-[#19B39F] hover:bg-[#15a08e] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-[#19B39F] transition"
-            aria-label={isPlaying ? 'Pause' : 'Play'}
-            disabled={isLoading}
-          >
-            {isPlaying ? (
-              <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="white"/><rect x="14" y="4" width="4" height="16" rx="2" fill="white"/></svg>
-            ) : (
-              <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="white"/></svg>
-            )}
-          </button>
-          <span className="text-gray-300 text-xs w-10 text-right">{formatTime(currentTime)}</span>
-          <input
-            type="range"
-            min={0}
-            max={audioDuration}
-            value={currentTime}
-            onChange={handleProgressChange}
-            className="flex-1 h-1 bg-[#EF8665] rounded-lg appearance-none cursor-pointer accent-[#19B39F]"
-            style={{ accentColor: '#19B39F' }}
-          />
-          <span className="text-gray-300 text-xs w-10">{formatTime(audioDuration)}</span>
-        </div>
-        {isLoading && <div className="text-gray-400 mt-2 text-xs">Loading audio...</div>}
-        {error && <div className="text-red-500 mt-2 text-xs">{error}</div>}
+        {/* Duration - only show if there's audio */}
+        {hasAudio && (
+          <div className="text-gray-300 text-sm mb-6">
+            {audioDuration > 0 ? `${formatTime(audioDuration)} min` : (isLoading ? 'Loading...' : `${duration} min`)}
+          </div>
+        )}
+        {/* Audio Controls - only show if there's audio */}
+        {hasAudio && (
+          <div className="flex items-center gap-3 w-full">
+            <button
+              onClick={togglePlayPause}
+              className="bg-[#19B39F] hover:bg-[#15a08e] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-[#19B39F] transition"
+              aria-label={isPlaying ? 'Pause' : 'Play'}
+              disabled={isLoading}
+            >
+              {isPlaying ? (
+                <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect x="7" y="4" width="4" height="16" rx="2" fill="white"/><rect x="14" y="4" width="4" height="16" rx="2" fill="white"/></svg>
+              ) : (
+                <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M7 4v16l13-8-13-8z" fill="white"/></svg>
+              )}
+            </button>
+            <span className="text-gray-300 text-xs w-10 text-right">{formatTime(currentTime)}</span>
+            <input
+              type="range"
+              min={0}
+              max={audioDuration}
+              value={currentTime}
+              onChange={handleProgressChange}
+              className="flex-1 h-1 bg-[#EF8665] rounded-lg appearance-none cursor-pointer accent-[#19B39F]"
+              style={{ accentColor: '#19B39F' }}
+            />
+            <span className="text-gray-300 text-xs w-10">{formatTime(audioDuration)}</span>
+          </div>
+        )}
+        {hasAudio && isLoading && <div className="text-gray-400 mt-2 text-xs">Loading audio...</div>}
+        {hasAudio && error && <div className="text-red-500 mt-2 text-xs">{error}</div>}
       </div>
-      {/* Hidden audio element */}
-      <audio
-        ref={audioRef}
-        src={audioUrl}
-        onLoadedMetadata={handleLoadedMetadata}
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={handleEnded}
-        onError={handleError}
-        className="hidden"
-        preload="metadata"
-      />
+      {/* Hidden audio element - only render if there's audio */}
+      {hasAudio && (
+        <audio
+          ref={audioRef}
+          src={audioUrl}
+          onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
+          onEnded={handleEnded}
+          onError={handleError}
+          className="hidden"
+          preload="metadata"
+        />
+      )}
     </div>
   );
 } 

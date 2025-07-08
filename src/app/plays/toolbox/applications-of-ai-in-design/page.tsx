@@ -14,14 +14,12 @@ export default function ApplicationsOfAIInDesignPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Applications of AI in Design.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
-              audioUrl={audioUrl} 
-              imageSrc={aiApplicationsArt} 
-              title="Applications of AI in Design"
-              labels={['AI', 'Design']}
-            />
-          )}
+          <AudioPlayerWrapper 
+            audioUrl={audioUrl} 
+            imageSrc={aiApplicationsArt} 
+            title="Applications of AI in Design"
+            labels={['AI', 'Design']}
+          />
         </div>
       </div>
     </main>

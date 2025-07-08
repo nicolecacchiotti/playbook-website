@@ -14,14 +14,13 @@ export default function UserTestingPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for User Testing.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={userTestingArt} 
               title="User Testing"
               labels={['Research', 'Testing']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

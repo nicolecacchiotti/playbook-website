@@ -14,14 +14,13 @@ export default function DesignPrototypingPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Design Prototyping.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={designPrototypingArt} 
               title="Design Prototyping"
               labels={['Design', 'Prototyping']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

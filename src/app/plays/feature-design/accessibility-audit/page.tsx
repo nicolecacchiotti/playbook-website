@@ -14,14 +14,13 @@ export default function AccessibilityAuditPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Accessibility Audit.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={accessibilityAuditArt} 
               title="Accessibility Audit"
               labels={['Accessibility', 'Audit']}
             />
-          )}
+          )
         </div>
       </div>
     </main>

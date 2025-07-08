@@ -14,14 +14,13 @@ export default function ConceptUsabilityTestingPage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Concept & Usability Testing.</p>
-          {audioUrl && (
-            <AudioPlayerWrapper 
+                    <AudioPlayerWrapper 
               audioUrl={audioUrl} 
               imageSrc={conceptUsabilityTestingArt} 
               title="Concept & Usability Testing"
               labels={['Testing', 'Usability']}
             />
-          )}
+          )
         </div>
       </div>
     </main>
