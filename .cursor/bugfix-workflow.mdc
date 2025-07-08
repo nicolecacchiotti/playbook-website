@@ -1,0 +1,124 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Bug Fix Workflow
+
+This rule defines our workflow for fixing bugs, with a strong emphasis on regression testing to prevent the same issues from recurring.
+
+<rule>
+name: bugfix_workflow
+description: Defines the workflow for fixing bugs
+
+filters:
+  - type: event
+    pattern: "branch_created"
+    condition: "branch.startsWith('fix/')"
+
+actions:
+  - type: suggest
+    message: |
+      ## Bug Fix Workflow
+
+      Follow these steps when fixing a bug:
+
+      ### 1. Understand the Bug
+      - [ ] Reproduce the bug to understand its exact behavior
+      - [ ] Identify the root cause of the bug
+      - [ ] Create a fix branch from `main` with the naming convention `fix/bug-description`
+
+      ### 2. Fix Implementation
+      - [ ] Implement the fix in the simplest way possible
+      - [ ] Ensure the fix addresses the root cause, not just the symptoms
+      - [ ] Add appropriate comments explaining the fix
+
+      ### 3. Testing
+      - [ ] Create a regression test that would have caught this bug
+      - [ ] Verify the test fails without your fix and passes with it
+      - [ ] Run all existing tests to ensure no regressions
+      - [ ] Manually verify the bug is fixed
+
+      ### 4. Review
+      - [ ] Review your own code for any issues or improvements
+      - [ ] Create a pull request with a clear description of:
+        - The bug and its impact
+        - The root cause
+        - The fix implemented
+        - How the fix was tested
+      - [ ] Address any feedback from code reviews
+
+      ### 5. Deployment
+      - [ ] Merge the fix branch into `main` after approval
+      - [ ] Verify the fix works in the staging environment
+      - [ ] Consider if this fix should be backported to previous versions
+
+      ### Testing Commands
+      ```bash
+      # Run all tests
+      yarn test
+
+      # Run tests for a specific workspace
+      yarn workspace @fuel-mobile/app test
+      yarn workspace @fuel-mobile/server test
+
+      # Run tests with coverage
+      yarn test:coverage
+      ```
+
+  - type: checklist
+    items:
+      - "Reproduce and understand the bug"
+      - "Identify the root cause"
+      - "Implement the fix"
+      - "Create a regression test"
+      - "Verify the test fails without the fix and passes with it"
+      - "Run all existing tests to ensure no regressions"
+      - "Create pull request with clear description"
+
+examples:
+  - input: |
+      # New fix branch created: fix/authentication-token-expiry
+    output: |
+      You've created a new fix branch for the authentication token expiry bug. Follow the bug fix workflow:
+
+      1. **Understand the Bug**:
+         - Reproduce the scenario where authentication tokens aren't properly refreshed
+         - Identify if the issue is in the token refresh logic, expiry calculation, or elsewhere
+
+      2. **Fix Implementation**:
+         - Implement the fix for the token refresh mechanism
+         - Ensure proper error handling for token expiry scenarios
+
+      3. **Testing**:
+         - Create a regression test that simulates token expiry:
+           ```typescript
+           // Example test for token refresh
+           describe('AuthService', () => {
+             it('should refresh token when expired', async () => {
+               // Mock an expired token
+               jest.spyOn(AuthService, 'isTokenExpired').mockReturnValue(true);
+               
+               // Call a method that should trigger token refresh
+               await AuthService.makeAuthenticatedRequest('/some-endpoint');
+               
+               // Verify token was refreshed
+               expect(AuthService.refreshToken).toHaveBeenCalled();
+             });
+           });
+           ```
+         - Verify the test fails without your fix and passes with it
+         - Run all auth-related tests to ensure no regressions
+
+      4. **Review and Deployment**:
+         - Create a pull request describing:
+           - The bug: "Authentication tokens weren't being refreshed properly when expired"
+           - Root cause: "The token expiry check was using local time instead of server time"
+           - Fix: "Updated token expiry check to use server time from the token payload"
+           - Testing: "Added regression test that simulates token expiry and verifies refresh"
+         - Deploy to staging and verify the fix works
+
+metadata:
+  priority: high
+  version: 1.0
+</rule> 

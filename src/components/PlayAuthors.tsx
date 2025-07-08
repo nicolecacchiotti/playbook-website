@@ -3,6 +3,7 @@ import JohnMigliorisi from '@/../assets/Avatar images/JohnMigliorisi.png';
 import KenDabkowski from '@/../assets/Avatar images/KenDabkowski.png';
 import NicoleBaeder from '@/../assets/Avatar images/NicoleBaeder.png';
 import KarolinaWhitmore from '@/../assets/Avatar images/KarolinaWhitmore.png';
+import MasonPlunkett from '@/../assets/Avatar images/MasonPlunkett.png';
 
 interface Author {
   name: string;
@@ -37,6 +38,14 @@ export const designReviewAuthors: Author[] = [
     name: "Karolina Whitmore",
     image: KarolinaWhitmore,
     initials: "KW"
+  }
+];
+
+export const designPlanAuthors: Author[] = [
+  {
+    name: "Mason Plunkett",
+    image: MasonPlunkett,
+    initials: "MP"
   }
 ];
 

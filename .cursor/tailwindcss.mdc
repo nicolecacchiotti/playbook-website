@@ -1,0 +1,50 @@
+---
+description: 
+globs: .tsx,.css
+alwaysApply: false
+---
+# Tailwind CSS Standards - MUST Follow
+
+## REQUIRED Best Practices
+- **ALWAYS** use utility classes instead of inline styles
+- **MUST** combine multiple utility classes for complex styles
+- **REQUIRED** use responsive prefixes (sm:, md:, lg:, xl:) for different screen sizes
+- **MUST** create custom utility classes for frequently used combinations
+- **ALWAYS** maintain consistent spacing using the spacing scale (p-4, m-2, etc.)
+- **REQUIRED** use semantic color names from the color palette
+- **MUST** ensure text contrast meets accessibility standards (minimum 4.5:1 ratio)
+- **ALWAYS** use flexbox/grid utilities for layout instead of custom CSS
+- **REQUIRED** apply consistent component styles across the app
+- **MUST** use the constants/theme.ts file to access, create, and store re-usable custom themes
+
+## MANDATORY Naming Conventions
+- **classNames**: MUST use kebab-case for custom class names
+- **components**: MUST use PascalCase for component names
+
+## REQUIRED Performance Rules
+- **NEVER** use custom styles outside of Tailwind without justification
+- **MUST** use @apply in a separate CSS file for complex, reusable styles
+- **REQUIRED** purge unused styles in production builds
+## MANDATORY Utility Function Usage
+- **ALWAYS** use the cn() utility function from `/utils/tw.ts` or `@/utils/tw.ts`
+- **REQUIRED** for conditional classes and state-aware styling
+
+### Examples (MUST follow these patterns):
+```typescript
+// CORRECT - State-aware styling
+className={cn("rounded-t-3xl", isDark ? "bg-[#202020]" : "bg-white")}
+
+// CORRECT - Conditional classes
+className={cn("flex", {
+    "text-red-500": isDanger,
+    "text-green-500": isSuccess
+})}
+```
+
+## VIOLATIONS WILL BE REJECTED
+- ❌ Using inline styles
+- ❌ Custom CSS without @apply
+- ❌ Non-responsive designs
+- ❌ Poor color contrast
+- ❌ Inconsistent spacing
+- ❌ Not using cn() utility function
