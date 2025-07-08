@@ -106,7 +106,9 @@ export default function AudioPlayerWrapper({ audioUrl, imageSrc, title = 'Delive
         {/* Title */}
         <h2 className="text-xl md:text-2xl font-bold mb-2 leading-tight">{title}</h2>
         {/* Duration */}
-        <div className="text-gray-300 text-sm mb-6">{duration} min</div>
+        <div className="text-gray-300 text-sm mb-6">
+          {audioDuration > 0 ? `${formatTime(audioDuration)} min` : (isLoading ? 'Loading...' : `${duration} min`)}
+        </div>
         {/* Audio Controls */}
         <div className="flex items-center gap-3 w-full">
           <button
