@@ -117,7 +117,7 @@ export default function HamburgerMenu() {
               <AccordionItem value={section.title} key={section.title}>
                 <AccordionTrigger className="px-4 text-sm font-semibold hover:no-underline">
                   <div className="flex items-center gap-2">
-                    {section.icon}
+                    <span style={{ color: '#19B39F' }}>{section.icon}</span>
                     {section.title}
                   </div>
                 </AccordionTrigger>

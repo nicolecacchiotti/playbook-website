@@ -4,6 +4,7 @@ import KenDabkowski from '@/../assets/Avatar images/KenDabkowski.png';
 import NicoleBaeder from '@/../assets/Avatar images/NicoleBaeder.png';
 import KarolinaWhitmore from '@/../assets/Avatar images/KarolinaWhitmore.png';
 import MasonPlunkett from '@/../assets/Avatar images/MasonPlunkett.png';
+import MattRogers from '@/../assets/Avatar images/MattRogers.png';
 
 interface Author {
   name: string;
@@ -46,6 +47,14 @@ export const designPlanAuthors: Author[] = [
     name: "Mason Plunkett",
     image: MasonPlunkett,
     initials: "MP"
+  }
+];
+
+export const clientOnboardingAuthors: Author[] = [
+  {
+    name: "Matt Rogers",
+    image: MattRogers,
+    initials: "MR"
   }
 ];
 

@@ -66,7 +66,7 @@ export default function DesignPlanPage() {
                 </div>
               </div>
             </div>
-          )
+          )}
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
               <h2 className="text-xl font-semibold mb-4">Planning & Prep</h2>
@@ -123,7 +123,7 @@ export default function DesignPlanPage() {
                 </div>
               </div>
             </div>
-          )
+          )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
               <h2 className="text-xl font-semibold mb-4">How to run the play</h2>
@@ -335,7 +335,7 @@ export default function DesignPlanPage() {
                 </div>
               </BlueCard>
             </div>
-          )
+          )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
               <h2 className="text-xl font-semibold">Common Pitfalls</h2>
@@ -367,7 +367,7 @@ export default function DesignPlanPage() {
                 </div>
               </div>
             </div>
-          )
+          )}
         </div>
       </div>
     </main>

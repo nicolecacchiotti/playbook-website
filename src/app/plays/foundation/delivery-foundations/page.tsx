@@ -76,7 +76,7 @@ export default function DeliveryFoundationsPage() {
                 </ol>
               </div>
             </div>
-          )
+          )}
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
               <h2 className="text-xl font-semibold mb-2">Become Familiar with Key Delivery Responsibilities</h2>
@@ -110,7 +110,7 @@ export default function DeliveryFoundationsPage() {
                 </a>
               </GreenCard>
             </div>
-          )
+          )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
               <h2 className="text-xl font-semibold mb-2">How to run the play</h2>
@@ -213,7 +213,7 @@ export default function DeliveryFoundationsPage() {
                 </li>
               </ol>
             </div>
-          )
+          )}
           {selectedTab === 2 && (
             <BlueCard
               header="When You're Done"
@@ -229,7 +229,7 @@ export default function DeliveryFoundationsPage() {
                 <li>When will our work be completed?</li>
               </ul>
             </BlueCard>
-          )
+          )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
               <h2 className="text-xl font-semibold">Common Pitfalls</h2>
@@ -269,7 +269,7 @@ export default function DeliveryFoundationsPage() {
                 </div>
               </div>
             </div>
-          )
+          )}
         </div>
       </div>
     </main>

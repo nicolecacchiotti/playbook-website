@@ -48,7 +48,7 @@ export default function DesignReviewPage() {
                 </p>
               </div>
             </div>
-          )
+          )}
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
               <h2 className="text-xl font-semibold mb-2">Planning & Prep</h2>
@@ -70,7 +70,7 @@ export default function DesignReviewPage() {
                 </li>
               </ol>
             </div>
-          )
+          )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
               <h2 className="text-xl font-semibold mb-4">Sample Design Review Agenda:</h2>
@@ -124,7 +124,7 @@ export default function DesignReviewPage() {
                 </li>
               </ol>
             </div>
-          )
+          )}
           {selectedTab === 2 && (
             <div>
               <BlueCard
@@ -155,7 +155,7 @@ export default function DesignReviewPage() {
                 />
               </div>
             </div>
-          )
+          )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
               <h2 className="text-xl font-semibold">Common Pitfalls</h2>
@@ -195,7 +195,7 @@ export default function DesignReviewPage() {
                 </div>
               </div>
             </div>
-          )
+          )}
         </div>
       </div>
     </main>
