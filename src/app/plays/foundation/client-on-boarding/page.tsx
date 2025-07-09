@@ -18,13 +18,13 @@ export default function ClientOnboardingPage() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <main className="min-h-screen bg-background p-8">
+      <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-md">
         <Breadcrumb section={section} title={title} />
         <div className="mt-6 space-y-6">
           <PlayAuthors authors={clientOnboardingAuthors} />
-          <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-          <p style={{ fontSize: '14px' }}>Client onboarding is the process of aligning the client, design team, and other team members on how to work together as well as outlining how the project will proceed.</p>
+          <h1 className="text-3xl font-bold text-foreground">{title}</h1>
+          <p className="text-foreground" style={{ fontSize: '14px' }}>Client onboarding is the process of aligning the client, design team, and other team members on how to work together as well as outlining how the project will proceed.</p>
           <AudioPlayerWrapper 
             audioUrl={audioUrl} 
             imageSrc={clientOnboardingArt} 
@@ -36,38 +36,38 @@ export default function ClientOnboardingPage() {
           </div>
           {selectedTab === 0 && (
             <div className="mt-8" id="overview-content">
-              <h2 className="text-xl font-semibold mb-2">Why to use this play</h2>
-              <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+              <h2 className="text-xl font-semibold mb-2 text-foreground">Why to use this play</h2>
+              <p className="text-muted-foreground mb-4" style={{ fontSize: '14px' }}>
                 WillowTree designers collaborate and partner directly with our stakeholders. Norming and onboarding are crucial to establishing trust early on in any project. In this play, the client, design team, and other team members align on how to work together and ensure everyone is on the same page regarding the project's direction.
               </p>
               
               <div className="mt-10">
-                <h2 className="text-xl font-semibold mb-2">When to use this play</h2>
+                <h2 className="text-xl font-semibold mb-2 text-foreground">When to use this play</h2>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2" style={{ fontSize: '14px' }}>At the beginning of an new engagement or project</h3>
-                    <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                    <h3 className="font-semibold text-foreground mb-2" style={{ fontSize: '14px' }}>At the beginning of an new engagement or project</h3>
+                    <p className="text-muted-foreground mb-4" style={{ fontSize: '14px' }}>
                       Similar to onboarding with your internal team, it's crucial to also norm and onboard with your clients. This involves establishing meeting cadences, setting review and feedback expectations, and building a personal connection to establish rapport.
                     </p>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2" style={{ fontSize: '14px' }}>When you're joining an existing project</h3>
-                    <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                    <h3 className="font-semibold text-foreground mb-2" style={{ fontSize: '14px' }}>When you're joining an existing project</h3>
+                    <p className="text-muted-foreground mb-4" style={{ fontSize: '14px' }}>
                       As a designer joining an existing team, this play provides an excellent opportunity to discuss current design processes with stakeholders and team members, and make any necessary adjustments.
                     </p>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2" style={{ fontSize: '14px' }}>When your stakeholders change:</h3>
-                    <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                    <h3 className="font-semibold text-foreground mb-2" style={{ fontSize: '14px' }}>When your stakeholders change:</h3>
+                    <p className="text-muted-foreground mb-4" style={{ fontSize: '14px' }}>
                       When stakeholders join or leave a project team, it's important to ensure they are brought up to speed. This involves adjusting communication style and meeting cadence to fit their needs. We want new stakeholders to feel included in the team and the design process from the start, rather than feeling like outsiders.
                     </p>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2" style={{ fontSize: '14px' }}>After a misalignment or client issue:</h3>
-                    <p className="text-gray-700" style={{ fontSize: '14px' }}>
+                    <h3 className="font-semibold text-foreground mb-2" style={{ fontSize: '14px' }}>After a misalignment or client issue:</h3>
+                    <p className="text-muted-foreground" style={{ fontSize: '14px' }}>
                       Sometimes projects get off track, and we need to shift into recovery mode. If the design process gets derailed or tensions rise, it's important to take a step back and realign with the stakeholders. Are we still on track with our goals? Are we communicating frequently enough? What does the client need to be more successful, and what does the design need to be more successful?
                     </p>
                   </div>
@@ -77,9 +77,9 @@ export default function ClientOnboardingPage() {
           )}
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
-              <h2 className="text-xl font-semibold mb-2">Planning & Prep</h2>
+              <h2 className="text-xl font-semibold mb-2 text-foreground">Planning & Prep</h2>
               
-              <ol className="list-decimal list-inside space-y-8 text-gray-700" style={{ fontSize: '14px' }}>
+              <ol className="list-decimal list-inside space-y-8 text-muted-foreground" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Gather project context</span>
                   <ul className="list-disc ml-8 mt-3 space-y-2">
@@ -139,9 +139,9 @@ export default function ClientOnboardingPage() {
           )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
-              <h2 className="text-xl font-semibold mb-2">How to run the play</h2>
+              <h2 className="text-xl font-semibold mb-2 text-foreground">How to run the play</h2>
               
-              <ol className="list-decimal list-inside space-y-8 text-gray-700" style={{ fontSize: '14px' }}>
+              <ol className="list-decimal list-inside space-y-8 text-muted-foreground" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Introductions & coordinating</span> <span className="text-gray-500 text-sm">~30 min</span>
                   <ul className="list-disc ml-8 space-y-3 mt-3">
@@ -220,7 +220,7 @@ export default function ClientOnboardingPage() {
           )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
-              <h2 className="text-xl font-semibold">Common Pitfalls</h2>
+              <h2 className="text-xl font-semibold text-foreground">Common Pitfalls</h2>
               
               <RedCard
                 header="Getting Started Without Establishing a Relationship"
@@ -239,7 +239,7 @@ export default function ClientOnboardingPage() {
               />
               
               <div className="mt-10">
-                <h2 className="text-xl font-semibold mb-4">Resources</h2>
+                <h2 className="text-xl font-semibold mb-4 text-foreground">Resources</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <ResourceCard
                     title="Client Introductions"

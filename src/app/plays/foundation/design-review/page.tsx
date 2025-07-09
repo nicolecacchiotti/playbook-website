@@ -18,13 +18,13 @@ export default function DesignReviewPage() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <main className="min-h-screen bg-background p-8">
+      <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-md">
         <Breadcrumb section={section} title={title} />
         <div className="mt-6 space-y-6">
           <PlayAuthors authors={designReviewAuthors} />
-          <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-          <p style={{ fontSize: '14px' }}>A design review is a recurring meeting in which progress of design and other design-related elements are shared with stakeholders.</p>
+          <h1 className="text-3xl font-bold text-foreground">{title}</h1>
+          <p className="text-foreground" style={{ fontSize: '14px' }}>A design review is a recurring meeting in which progress of design and other design-related elements are shared with stakeholders.</p>
           <AudioPlayerWrapper 
             audioUrl={audioUrl} 
             imageSrc={designReviewArt} 
@@ -36,14 +36,14 @@ export default function DesignReviewPage() {
           </div>
           {selectedTab === 0 && (
             <div className="mt-8" id="overview-content">
-              <h2 className="text-xl font-semibold mb-2">Why to use this play</h2>
-              <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+              <h2 className="text-xl font-semibold mb-2 text-foreground">Why to use this play</h2>
+              <p className="text-muted-foreground mb-4" style={{ fontSize: '14px' }}>
                 A design review is a personalized experience led by Product Designers to get feedback and approval on designs (features, concepts, animation, creative direction). Use this time to connect with your client, build rapport, and negotiate design solutions. This functions best as a collaborative effort that brings perspectives from a diverse set of eyes, from engineering to requirements to analytics.
               </p>
               
               <div className="mt-10">
-                <h2 className="text-xl font-semibold mb-2">When to use this play</h2>
-                <p className="text-gray-700" style={{ fontSize: '14px' }}>
+                <h2 className="text-xl font-semibold mb-2 text-foreground">When to use this play</h2>
+                <p className="text-muted-foreground" style={{ fontSize: '14px' }}>
                   <span className="font-semibold">Weekly (but flexible)</span> The ideal state is to meet weekly for design reviews with the client to keep everyone on the same page and up to date on any progress. Remain flexible, follow up the next day with smaller focus groups or recommend "parking lot" topics to keep the meeting on track.
                 </p>
               </div>
@@ -51,8 +51,8 @@ export default function DesignReviewPage() {
           )}
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
-              <h2 className="text-xl font-semibold mb-2">Planning & Prep</h2>
-              <ol className="list-decimal list-inside space-y-6 text-gray-700" style={{ fontSize: '14px' }}>
+              <h2 className="text-xl font-semibold mb-2 text-foreground">Planning & Prep</h2>
+              <ol className="list-decimal list-inside space-y-6 text-muted-foreground" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Pre-design review:</span> Ahead of the design review connect with your primary stakeholder or PO to give them a preview of what you're thinking of presenting and work on getting their initial buy-in to your approach. This is also a great time to circulate any questions you have on technical feasibility and additional input/answers needed from the client side.
                 </li>
@@ -73,8 +73,8 @@ export default function DesignReviewPage() {
           )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
-              <h2 className="text-xl font-semibold mb-4">Sample Design Review Agenda:</h2>
-              <ul className="list-disc ml-6 space-y-2 text-gray-700 mb-6" style={{ fontSize: '14px' }}>
+              <h2 className="text-xl font-semibold mb-4 text-foreground">Sample Design Review Agenda:</h2>
+              <ul className="list-disc ml-6 space-y-2 text-muted-foreground mb-6" style={{ fontSize: '14px' }}>
                 <li>Welcome and Introduction (5 minutes)</li>
                 <li>Review of Feature Overview (10 minutes)</li>
                 <li>Competitive Landscape Analysis (15 minutes)</li>
@@ -85,7 +85,7 @@ export default function DesignReviewPage() {
                 <li>Wrap-up (5 minutes)</li>
               </ul>
               
-              <p className="text-gray-700 mb-6" style={{ fontSize: '14px' }}>
+              <p className="text-muted-foreground mb-6" style={{ fontSize: '14px' }}>
                 <span className="font-semibold">Note:</span> The duration allocated to each agenda item can be adjusted based on the complexity and importance of the discussion. It is essential to maintain a productive and inclusive atmosphere throughout the meeting, allowing all participants to contribute their ideas and perspectives.
               </p>
 
@@ -97,7 +97,7 @@ export default function DesignReviewPage() {
                 />
               </div>
 
-              <ol className="list-decimal list-inside space-y-6 text-gray-700" style={{ fontSize: '14px' }}>
+              <ol className="list-decimal list-inside space-y-6 text-muted-foreground" style={{ fontSize: '14px' }}>
                 <li>
                   <span className="font-semibold">Welcome and Introduction (5 minutes):</span> Start the meeting by welcoming all participants and introducing the purpose of the meeting. Briefly mention the importance of the new feature and its potential impact on the product.
                 </li>
@@ -133,15 +133,15 @@ export default function DesignReviewPage() {
                 icon={<ListCheck className="w-6 h-6 text-blue-700 mb-2" />}
               >
                 <div style={{ fontSize: '14px' }}>
-                  <p className="mb-4 text-gray-700">
+                  <p className="mb-4 text-muted-foreground">
                     <span className="font-semibold">Post design review:</span> Shortly after your design review, circulate an email to all the attendees and stakeholders that briefly recaps the decisions, next steps and open questions following the review. This is a good opportunity to let stakeholders know what the next meeting will entail and to set expectations, e.g., "Next week, we'll be meeting on Thursday to review the revisions to component X and work to finalize the feature in our meeting."
                   </p>
                   
-                  <p className="mb-4 text-gray-700">
+                  <p className="mb-4 text-muted-foreground">
                     <span className="font-semibold">DRI's & dependencies:</span> DRI's for any action items discussed in the design review, such as who is responsible for getting specific information and by what date. Make sure your client and your internal team know if you are blocked from moving forward or finalizing a feature design.
                   </p>
                   
-                  <p className="text-gray-700">
+                  <p className="text-muted-foreground">
                     <span className="font-semibold">Next steps:</span> Have a clear understanding of next steps and a planned date to have them completed. Promptly email out your design review documentation (within a day). Include next steps, blockers and the date of the next review.
                   </p>
                 </div>
@@ -158,7 +158,7 @@ export default function DesignReviewPage() {
           )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
-              <h2 className="text-xl font-semibold">Common Pitfalls</h2>
+              <h2 className="text-xl font-semibold text-foreground">Common Pitfalls</h2>
               <RedCard
                 header="Client Swirl"
                 body="Clients can get stuck on decisions that aren't mission-critical, such as a photo, word or color they don't like. A good move here is to offer user research to validate or inform this decision or ask the team that we do a quick poll via email after the meeting, so you can be sure to get through your whole agenda."
@@ -182,7 +182,7 @@ export default function DesignReviewPage() {
               />
               
               <div className="mt-10">
-                <h2 className="text-xl font-semibold mb-4">Resources</h2>
+                <h2 className="text-xl font-semibold mb-4 text-foreground">Resources</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <ResourceCard
                     title="FigJam Roundup"

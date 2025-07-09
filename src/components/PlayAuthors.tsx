@@ -63,7 +63,7 @@ export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsPro
     <div className="flex items-center gap-3 mb-4">
       <div className="flex -space-x-2">
         {authors.map((author, index) => (
-          <Avatar key={author.name} className="w-8 h-8 border-2 border-white">
+          <Avatar key={author.name} className="w-8 h-8 border-2 border-white dark:border-[#0D423C]">
             <AvatarImage 
               src={author.image.src || author.image} 
               alt={author.name}
@@ -78,7 +78,7 @@ export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsPro
         {authors.map((author) => (
           <span 
             key={author.name}
-            className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full font-medium"
+            className="bg-gray-100 text-gray-700 dark:bg-[#0D423C] dark:text-white px-2 py-1 rounded-full font-medium"
             style={{ fontSize: '12px' }}
           >
             {author.name}

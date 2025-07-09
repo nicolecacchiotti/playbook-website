@@ -56,6 +56,18 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Custom card colors */
+    --red-card-bg: #fef2f2; /* red-50 */
+    --red-card-hover: #fef2f2;
+    --resource-card-bg: #f9fafb; /* gray-50 */
+    --resource-card-hover: #f3f4f6; /* gray-100 */
+    --green-card-bg: #B1E8E1; /* light green */
+    --green-card-text: #374151; /* gray-700 */
+    --green-card-header: #000000; /* black */
+    --blue-card-bg: #eff6ff; /* blue-50 */
+    --blue-card-text: #374151; /* gray-700 */
+    --blue-card-header: #000000; /* black */
   }
   .dark {
     --background: 168 46% 6%;
@@ -82,6 +94,18 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    
+    /* Custom card colors for dark mode */
+    --red-card-bg: #643121;
+    --red-card-hover: #643121;
+    --resource-card-bg: #263C65;
+    --resource-card-hover: #364C75;
+    --green-card-bg: #0D423C;
+    --green-card-text: #ffffff; /* white text */
+    --green-card-header: #ffffff; /* white header */
+    --blue-card-bg: #263C65;
+    --blue-card-text: #ffffff; /* white text */
+    --blue-card-header: #ffffff; /* white header */
   }
 }
 

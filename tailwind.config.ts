@@ -65,6 +65,24 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			'red-card': {
+  				DEFAULT: 'var(--red-card-bg)',
+  				hover: 'var(--red-card-hover)'
+  			},
+  			'resource-card': {
+  				DEFAULT: 'var(--resource-card-bg)',
+  				hover: 'var(--resource-card-hover)'
+  			},
+  			'green-card': {
+  				DEFAULT: 'var(--green-card-bg)',
+  				text: 'var(--green-card-text)',
+  				header: 'var(--green-card-header)'
+  			},
+  			'blue-card': {
+  				DEFAULT: 'var(--blue-card-bg)',
+  				text: 'var(--blue-card-text)',
+  				header: 'var(--blue-card-header)'
   			}
   		},
   		keyframes: {
@@ -91,9 +109,7 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-      require("tailwindcss-animate")
-],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
+
 export default config;

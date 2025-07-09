@@ -8,12 +8,12 @@ export default function MentorshipForMenteesPage() {
   const audioUrl = ""; // No audio file for mentorship yet
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <main className="min-h-screen bg-background p-8">
+      <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-md">
         <Breadcrumb section={section} title={title} />
         <div className="mt-6 space-y-6">
-          <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-          <p>This is the page for Mentorship for Mentees.</p>
+          <h1 className="text-3xl font-bold text-foreground">{title}</h1>
+          <p className="text-foreground">This is the page for Mentorship for Mentees.</p>
           <AudioPlayerWrapper 
             audioUrl={audioUrl} 
             imageSrc={mentorshipArt} 
