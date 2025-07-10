@@ -5,7 +5,7 @@ import projectOutbriefArt from '@/../assets/Card Art/Project Outbrief.svg';
 export default function ProjectOutbriefPage() {
   const title = "Project Outbrief";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Project Outbrief.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function ProjectOutbriefPage() {
               title="Project Outbrief"
               labels={['Project', 'Documentation']}
             />
-          )
         </div>
       </div>
     </main>

@@ -5,7 +5,7 @@ import productMappingArt from '@/../assets/Card Art/ProductMap.svg';
 export default function ProductMappingPage() {
   const title = "Product Mapping";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Product Mapping.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">

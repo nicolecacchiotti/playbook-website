@@ -5,7 +5,7 @@ import userNeedsAssumptionsArt from '@/../assets/Card Art/UserNeeds&Assumptions.
 export default function UserNeedsAssumptionsPage() {
   const title = "User Needs & Assumptions";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/User Needs & Assumptions Workshop.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function UserNeedsAssumptionsPage() {
               title="User Needs & Assumptions"
               labels={['Research', 'UX']}
             />
-          )
         </div>
       </div>
     </main>

@@ -5,7 +5,7 @@ import competitiveOpportunityArt from '@/../assets/Card Art/CompetitiveOpportuni
 export default function CompetitiveOpportunityPage() {
   const title = "Competitive Opportunity";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Competitive Opportunity.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">

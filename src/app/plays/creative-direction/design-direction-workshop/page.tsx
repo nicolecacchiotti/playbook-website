@@ -5,7 +5,7 @@ import designDirectionWorkshopArt from '@/../assets/Card Art/DesignDirectionWork
 export default function DesignDirectionWorkshopPage() {
   const title = "Design Direction Workshop";
   const section = "Creative Direction";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Design Direction Workshop.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function DesignDirectionWorkshopPage() {
               title="Design Direction Workshop"
               labels={['Workshop', 'Design']}
             />
-          )
         </div>
       </div>
     </main>

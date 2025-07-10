@@ -5,7 +5,7 @@ import uxWritingArt from '@/../assets/Card Art/UX Writing.svg';
 export default function UXWritingPage() {
   const title = "UX Writing";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/UX Writing.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function UXWritingPage() {
               title="UX Writing"
               labels={['Content', 'UX']}
             />
-          )
         </div>
       </div>
     </main>

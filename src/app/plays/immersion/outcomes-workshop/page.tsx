@@ -5,7 +5,7 @@ import outcomesWorkshopArt from '@/../assets/Card Art/OutcomesWorkshop.svg';
 export default function OutcomesWorkshopPage() {
   const title = "Outcomes Workshop";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Outcomes Workshop.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function OutcomesWorkshopPage() {
               title="Outcomes Workshop"
               labels={['Workshop', 'Strategy']}
             />
-          )
         </div>
       </div>
     </main>

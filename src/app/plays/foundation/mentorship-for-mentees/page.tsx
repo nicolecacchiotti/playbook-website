@@ -5,7 +5,7 @@ import mentorshipArt from '@/../assets/Card Art/Mentorship.svg';
 export default function MentorshipForMenteesPage() {
   const title = "Mentorship for Mentees";
   const section = "Foundation";
-  const audioUrl = ""; // No audio file for mentorship yet
+  const audioUrl = "/audio/Mentorship for Mentees.m4a";
 
   return (
     <main className="min-h-screen bg-background p-8">

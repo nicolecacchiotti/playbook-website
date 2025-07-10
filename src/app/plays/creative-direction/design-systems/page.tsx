@@ -5,7 +5,7 @@ import designSystemsArt from '@/../assets/Card Art/DesignSystems.svg';
 export default function DesignSystemsPage() {
   const title = "Design Systems";
   const section = "Creative Direction";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Design Systems.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function DesignSystemsPage() {
               title="Design Systems"
               labels={['Design', 'Systems']}
             />
-          )
         </div>
       </div>
     </main>

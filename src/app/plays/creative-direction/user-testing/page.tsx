@@ -5,7 +5,7 @@ import userTestingArt from '@/../assets/Card Art/User Testing.svg';
 export default function UserTestingPage() {
   const title = "User Testing";
   const section = "Creative Direction";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/User Testing.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function UserTestingPage() {
               title="User Testing"
               labels={['Research', 'Testing']}
             />
-          )
         </div>
       </div>
     </main>

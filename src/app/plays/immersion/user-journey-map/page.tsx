@@ -5,7 +5,7 @@ import userJourneyMapArt from '@/../assets/Card Art/UserJourneyMaps.svg';
 export default function UserJourneyMapPage() {
   const title = "User Journey Map";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/User Journey Map.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
