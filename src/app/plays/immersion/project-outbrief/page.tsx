@@ -1,8 +1,11 @@
 import Breadcrumb from '@/components/Breadcrumb';
+import AudioPlayerWrapper from '@/components/AudioPlayerWrapper';
+import projectOutbriefArt from '@/../assets/Card Art/Project Outbrief.svg';
 
-export default function Page() {
+export default function ProjectOutbriefPage() {
   const title = "Project Outbrief";
   const section = "Immersion";
+  const audioUrl = ""; // No audio file yet
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -11,6 +14,13 @@ export default function Page() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p>This is the page for Project Outbrief.</p>
+                    <AudioPlayerWrapper 
+              audioUrl={audioUrl} 
+              imageSrc={projectOutbriefArt} 
+              title="Project Outbrief"
+              labels={['Project', 'Documentation']}
+            />
+          )
         </div>
       </div>
     </main>

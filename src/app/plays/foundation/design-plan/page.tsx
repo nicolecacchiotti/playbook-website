@@ -18,13 +18,13 @@ export default function DesignPlanPage() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <main className="min-h-screen bg-background p-8">
+      <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-md">
         <Breadcrumb section={section} title={title} />
         <div className="mt-6 space-y-6">
           <PlayAuthors authors={designPlanAuthors} />
-          <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-          <p style={{ fontSize: '14px' }}>The creation of a Design Plan is an essential exercise that allows for design-specific project outcome alignment between WillowTree teams and their client partners. At its core, a Design Plan is executed in order to set a project team up for success.</p>
+          <h1 className="text-3xl font-bold text-foreground">{title}</h1>
+          <p className="text-foreground" style={{ fontSize: '14px' }}>The creation of a Design Plan is an essential exercise that allows for design-specific project outcome alignment between WillowTree teams and their client partners. At its core, a Design Plan is executed in order to set a project team up for success.</p>
           <AudioPlayerWrapper 
             audioUrl={audioUrl} 
             imageSrc={designPlanArt} 

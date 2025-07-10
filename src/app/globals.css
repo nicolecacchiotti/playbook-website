@@ -17,7 +17,7 @@
 }
 
 .dark body {
-  background: #000 !important;
+  background: #071412 !important;
   color: #fff;
 }
 
@@ -56,25 +56,37 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Custom card colors */
+    --red-card-bg: #fef2f2; /* red-50 */
+    --red-card-hover: #fef2f2;
+    --resource-card-bg: #f9fafb; /* gray-50 */
+    --resource-card-hover: #f3f4f6; /* gray-100 */
+    --green-card-bg: #B1E8E1; /* light green */
+    --green-card-text: #374151; /* gray-700 */
+    --green-card-header: #000000; /* black */
+    --blue-card-bg: #eff6ff; /* blue-50 */
+    --blue-card-text: #374151; /* gray-700 */
+    --blue-card-header: #000000; /* black */
   }
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 168 46% 6%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 168 46% 6%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 168 46% 6%;
     --popover-foreground: 210 40% 98%;
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 168 30% 20%;
+    --muted-foreground: 0 0% 70%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
+    --border: 168 60% 16%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
     --chart-1: 220 70% 50%;
@@ -82,6 +94,18 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    
+    /* Custom card colors for dark mode */
+    --red-card-bg: #643121;
+    --red-card-hover: #643121;
+    --resource-card-bg: #263C65;
+    --resource-card-hover: #364C75;
+    --green-card-bg: #0D423C;
+    --green-card-text: #ffffff; /* white text */
+    --green-card-header: #ffffff; /* white header */
+    --blue-card-bg: #263C65;
+    --blue-card-text: #ffffff; /* white text */
+    --blue-card-header: #ffffff; /* white header */
   }
 }
 

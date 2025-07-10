@@ -37,7 +37,8 @@ const pageSections: PageSection[] = [
       { title: 'Design Plan', slug: 'design-plan' },
       { title: 'Client On-Boarding', slug: 'client-on-boarding' },
       { title: 'Design Review', slug: 'design-review' },
-      { title: 'Mentorship', slug: 'mentorship' },
+      { title: 'Mentorship for Mentors', slug: 'mentorship-for-mentors' },
+      { title: 'Mentorship for Mentees', slug: 'mentorship-for-mentees' },
       { title: 'Delivery Foundations', slug: 'delivery-foundations' },
     ],
   },
@@ -116,7 +117,7 @@ export default function HamburgerMenu() {
               <AccordionItem value={section.title} key={section.title}>
                 <AccordionTrigger className="px-4 text-sm font-semibold hover:no-underline">
                   <div className="flex items-center gap-2">
-                    {section.icon}
+                    <span style={{ color: '#19B39F' }}>{section.icon}</span>
                     {section.title}
                   </div>
                 </AccordionTrigger>
