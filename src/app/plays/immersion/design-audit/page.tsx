@@ -5,7 +5,7 @@ import designAuditArt from '@/../assets/Card Art/DesignAudit.svg';
 export default function DesignAuditPage() {
   const title = "Design Audit";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Design Audit.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">

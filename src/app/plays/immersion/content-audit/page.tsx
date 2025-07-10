@@ -5,7 +5,7 @@ import contentAuditArt from '@/../assets/Card Art/ContentAudit.svg';
 export default function ContentAuditPage() {
   const title = "Content Audit";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Content Audit.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function ContentAuditPage() {
               title="Content Audit"
               labels={['Content', 'Analysis']}
             />
-          )
         </div>
       </div>
     </main>

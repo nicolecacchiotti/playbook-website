@@ -5,7 +5,7 @@ import rapidIdeationWorkshopArt from '@/../assets/Card Art/RapidIdeationWorkshop
 export default function RapidIdeationWorkshopPage() {
   const title = "Rapid Ideation Workshop";
   const section = "Immersion";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Rapid Ideation Workshop.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">

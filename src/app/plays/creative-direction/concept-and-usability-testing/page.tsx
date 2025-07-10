@@ -5,7 +5,7 @@ import conceptUsabilityTestingArt from '@/../assets/Card Art/DesignUsabilityTest
 export default function ConceptUsabilityTestingPage() {
   const title = "Concept & Usability Testing";
   const section = "Creative Direction";
-  const audioUrl = ""; // No audio file yet
+  const audioUrl = "/audio/Concept & Usability Testing.m4a";
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
@@ -20,7 +20,6 @@ export default function ConceptUsabilityTestingPage() {
               title="Concept & Usability Testing"
               labels={['Testing', 'Usability']}
             />
-          )
         </div>
       </div>
     </main>
