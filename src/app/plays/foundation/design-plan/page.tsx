@@ -36,30 +36,30 @@ export default function DesignPlanPage() {
           </div>
           {selectedTab === 0 && (
             <div className="mt-8" id="overview-content">
-              <h2 className="text-xl font-semibold mb-2">Why to use this play</h2>
-              <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+              <h2 className="text-xl font-semibold mb-2 text-foreground">Why to use this play</h2>
+              <p className="text-foreground mb-4" style={{ fontSize: '14px' }}>
                 A Design Plan is an exercise designed to create enough structure to support progress and forward momentum, even in situations where you simply do not have all of the answers. In fact, assuming that things will change helps to prepare you for when they do. After all, if clients knew how to solve their problems and seamlessly execute on their vision without disruption, they wouldn't come to us in the first place.
               </p>
               
               <div className="mt-10">
-                <h2 className="text-xl font-semibold mb-2">When to use this play</h2>
+                <h2 className="text-xl font-semibold mb-2 text-foreground">When to use this play</h2>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2" style={{ fontSize: '14px' }}>At the beginning of a new engagement</h3>
-                    <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                    <h3 className="font-semibold text-foreground mb-2" style={{ fontSize: '14px' }}>At the beginning of a new engagement</h3>
+                    <p className="text-foreground mb-4" style={{ fontSize: '14px' }}>
                       Before you can journey toward a shared design outcome, it is critical to plant a seed of shared understanding with your internal team and external client partners. When built collaboratively with all involved stakeholders, a Design Plan can set table stakes for your engagement while acting as a tool to build trust.
                     </p>
-                    <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                    <p className="text-foreground mb-4" style={{ fontSize: '14px' }}>
                       That being said, it is crucial that this happens in the early stages of your client relationship. Your instinct may lead you to a "wait and see" approach out of fear that you do not possess all necessary information to make informed decisions. Rather than being reactive, celebrate this starting point and make it clear that the plan will be revisited and updated often.
                     </p>
-                    <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                    <p className="text-foreground mb-4" style={{ fontSize: '14px' }}>
                       Think of a Design Plan as the grease that keeps the wheels moving smoothly. Even if the destination is not completely known at the beginning of your journey, the plan ensures that teams continue to move forward. Onward!
                     </p>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-2" style={{ fontSize: '14px' }}>After the project has been running for a couple of sprints</h3>
-                    <p className="text-gray-700" style={{ fontSize: '14px' }}>
+                    <h3 className="font-semibold text-foreground mb-2" style={{ fontSize: '14px' }}>After the project has been running for a couple of sprints</h3>
+                    <p className="text-foreground" style={{ fontSize: '14px' }}>
                       At the outset of the engagement, make a note to check back in on the plan periodically. Preparing your team for the reality that the plan will likely change makes it easier to take action if the need for change arrives.
                     </p>
                   </div>
@@ -69,15 +69,15 @@ export default function DesignPlanPage() {
           )}
           {selectedTab === 1 && (
             <div className="mt-8" id="process-content">
-              <h2 className="text-xl font-semibold mb-4">Planning & Prep</h2>
+              <h2 className="text-xl font-semibold mb-4 text-foreground">Planning & Prep</h2>
               
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-gray-800">1. Gathering essential information</h3>
-                  <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">1. Gathering essential information</h3>
+                  <p className="text-foreground mb-4" style={{ fontSize: '14px' }}>
                     Every WillowTree design engagement requires product designers to balance the power of design (access, intuitiveness, joy, and delight) against the objective realities of commercial organizations (time, money, requirements, client agendas, and technological limitations).
                   </p>
-                  <p className="text-gray-700 mb-6" style={{ fontSize: '14px' }}>
+                  <p className="text-foreground mb-6" style={{ fontSize: '14px' }}>
                     In an effort to make your best educated guess regarding the structure and sequencing of your work, consider the following:
                   </p>
                   
@@ -126,15 +126,15 @@ export default function DesignPlanPage() {
           )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
-              <h2 className="text-xl font-semibold mb-4">How to run the play</h2>
+              <h2 className="text-xl font-semibold mb-4 text-foreground">How to run the play</h2>
               
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-gray-800">1. Establish the timeline</h3>
-                  <p className="text-gray-700 mb-4" style={{ fontSize: '14px' }}>
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">1. Establish the timeline</h3>
+                  <p className="text-foreground mb-4" style={{ fontSize: '14px' }}>
                     Once the team has gathered context across all of the topics outlined above and has established a representative list of all features that could be completed during the engagement, it's time to:
                   </p>
-                  <ul className="list-disc ml-6 space-y-4 text-gray-700 mb-6" style={{ fontSize: '14px' }}>
+                  <ul className="list-disc ml-6 space-y-4 text-foreground mb-6" style={{ fontSize: '14px' }}>
                     <li>In the case that you do not have prioritization clarity, facilitate a prioritization workshop with key client stakeholders to gauge hypothesized business impact of features as they relate to each other.</li>
                     <li>Evaluate the time you have based on milestones and then segment up the time such that, when comparing features against each other, you allot time as meaningfully as you can. This decision-making <em>only</em> happens within the context of the actual time that you have, so being realistic and accounting for tradeoffs is essential. Consider framing the exercise in terms of what you can accomplish with the time you are given, as opposed to the time you think you need to complete a specific body of work.</li>
                     <li>Structure your work cadence according to what can be accomplished (often aligning features to "sprints", but not in every case).</li>
@@ -322,10 +322,10 @@ export default function DesignPlanPage() {
                 icon={<ListCheck className="w-6 h-6 text-blue-700 mb-2" />}
               >
                 <div style={{ fontSize: '14px' }}>
-                  <p className="mb-4 text-gray-700 font-semibold">
+                  <p className="mb-4 text-blue-card-text font-semibold">
                     Teams should feel confident in answering:
                   </p>
-                  <ul className="list-disc ml-6 space-y-2 text-gray-700">
+                  <ul className="list-disc ml-6 space-y-2 text-blue-card-text">
                     <li>What work have we agreed to do?</li>
                     <li>How will we communicate?</li>
                     <li>How will we prioritize our work?</li>
