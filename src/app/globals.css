@@ -60,6 +60,8 @@
     /* Custom card colors */
     --red-card-bg: #fef2f2; /* red-50 */
     --red-card-hover: #fef2f2;
+    --red-card-text: #374151; /* gray-700 */
+    --red-card-header: #000000; /* black */
     --resource-card-bg: #f9fafb; /* gray-50 */
     --resource-card-hover: #f3f4f6; /* gray-100 */
     --green-card-bg: #B1E8E1; /* light green */
@@ -96,8 +98,10 @@
     --chart-5: 340 75% 55%;
     
     /* Custom card colors for dark mode */
-    --red-card-bg: #643121;
-    --red-card-hover: #643121;
+    --red-card-bg: #443103;
+    --red-card-hover: #443103;
+    --red-card-text: #ffffff; /* white text */
+    --red-card-header: #ffffff; /* white header */
     --resource-card-bg: #263C65;
     --resource-card-hover: #364C75;
     --green-card-bg: #0D423C;
@@ -117,5 +121,29 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-blue-card-header {
+    color: var(--blue-card-header);
+  }
+  .text-blue-card-text {
+    color: var(--blue-card-text);
+  }
+  .bg-blue-card {
+    background-color: var(--blue-card-bg);
+  }
+  .text-red-card-header {
+    color: var(--red-card-header);
+  }
+  .text-red-card-text {
+    color: var(--red-card-text);
+  }
+  .bg-red-card {
+    background-color: var(--red-card-bg);
+  }
+  .text-red-card-icon {
+    color: #AA7B08;
   }
 }

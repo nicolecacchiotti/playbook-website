@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -17,6 +18,7 @@ import {
 } from '@/components/ui/accordion';
 import DarkModeToggle from './DarkModeToggle';
 import { Menu, LayoutDashboard, Search, Palette, AppWindow, Hammer } from 'lucide-react';
+import willowTreeLogo from '@/../assets/673f913d03b518ac2e8c2fa6_willowtree-logomark-white.svg';
 
 interface PlaybookPage {
   title: string;
@@ -109,7 +111,18 @@ export default function HamburgerMenu() {
       </SheetTrigger>
       <SheetContent side="left" className="w-[340px] sm:w-[400px] flex flex-col p-0">
         <SheetHeader className="border-b p-4">
-          <SheetTitle>Design Playbooks</SheetTitle>
+          <SheetTitle className="flex items-center gap-3">
+            <div 
+              style={{
+                width: '24px',
+                height: '24px',
+                backgroundColor: '#19B39F',
+                mask: `url(${willowTreeLogo.src}) center/contain no-repeat`,
+                WebkitMask: `url(${willowTreeLogo.src}) center/contain no-repeat`
+              }}
+            />
+            Design Playbooks
+          </SheetTitle>
         </SheetHeader>
         <div className="flex-1 overflow-y-auto">
           <Accordion type="multiple" className="w-full">
