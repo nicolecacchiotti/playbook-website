@@ -17,7 +17,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import DarkModeToggle from './DarkModeToggle';
-import { Menu, LayoutDashboard, Search, Palette, AppWindow, Hammer } from 'lucide-react';
+import { Menu, LayoutDashboard, Search, Palette, AppWindow, Hammer, GraduationCap } from 'lucide-react';
 import willowTreeLogo from '@/../assets/673f913d03b518ac2e8c2fa6_willowtree-logomark-white.svg';
 
 interface PlaybookPage {
@@ -97,6 +97,18 @@ const pageSections: PageSection[] = [
       { title: 'Design Resources', slug: 'design-resources' },
       { title: 'Applications of AI in Design', slug: 'applications-of-ai-in-design' },
       { title: 'AI Chatbot Best Practices', slug: 'ai-chatbot-best-practices' },
+    ],
+  },
+  {
+    title: 'Design Training',
+    icon: <GraduationCap className="h-4 w-4" />,
+    pages: [
+      { title: 'Business Acumen: Design Training 101', slug: 'business-acumen-design-training-101' },
+      { title: 'Client Value & Revenue Streams', slug: 'client-value-revenue-streams' },
+      { title: 'Market Dynamics in Design', slug: 'market-dynamics-in-design' },
+      { title: 'Organizational Context', slug: 'organizational-context' },
+      { title: 'Stakeholder Mapping', slug: 'stakeholder-mapping' },
+      { title: 'Business Outcomes', slug: 'business-outcomes' },
     ],
   },
 ];
