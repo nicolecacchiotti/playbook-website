@@ -6,6 +6,8 @@ import KarolinaWhitmore from '@/../assets/Avatar images/KarolinaWhitmore.png';
 import MasonPlunkett from '@/../assets/Avatar images/MasonPlunkett.png';
 import MattRogers from '@/../assets/Avatar images/MattRogers.png';
 import JennUpton from '@/../assets/Avatar images/JennUpton.png';
+import MarisDeBruhl from '@/../assets/Avatar images/MarisDeBruhl.png';
+import CourtneyOakes from '@/../assets/Avatar images/CourtneyOakes.png';
 
 interface Author {
   name: string;
@@ -64,6 +66,22 @@ export const mentorshipAuthors: Author[] = [
     name: "Jenn Upton",
     image: JennUpton,
     initials: "JU"
+  }
+];
+
+export const competitiveLandscapeAuthors: Author[] = [
+  {
+    name: "Maris DeBruhl",
+    image: MarisDeBruhl,
+    initials: "MD"
+  }
+];
+
+export const designAuditAuthors: Author[] = [
+  {
+    name: "Courtney Oakes",
+    image: CourtneyOakes,
+    initials: "CO"
   }
 ];
 
