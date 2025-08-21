@@ -8,6 +8,7 @@ import MattRogers from '@/../assets/Avatar images/MattRogers.png';
 import JennUpton from '@/../assets/Avatar images/JennUpton.png';
 import MarisDeBruhl from '@/../assets/Avatar images/MarisDeBruhl.png';
 import CourtneyOakes from '@/../assets/Avatar images/CourtneyOakes.png';
+import ConnorHarrison from '@/../assets/Avatar images/ConnorHarrison.png';
 
 interface Author {
   name: string;
@@ -82,6 +83,14 @@ export const designAuditAuthors: Author[] = [
     name: "Courtney Oakes",
     image: CourtneyOakes,
     initials: "CO"
+  }
+];
+
+export const uxWritingAuthors: Author[] = [
+  {
+    name: "Connor Harrison",
+    image: ConnorHarrison,
+    initials: "CH"
   }
 ];
 
