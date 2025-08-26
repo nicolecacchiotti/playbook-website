@@ -86,6 +86,12 @@ export const designAuditAuthors: Author[] = [
   }
 ];
 
+export const userJourneyMapAuthors: Author[] = [
+  {
+    name: "Moriah Cason",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U03A8CN9YUU-634aa2aa9fa3-512",
+    initials: "MC"
+    
 export const uxWritingAuthors: Author[] = [
   {
     name: "Connor Harrison",
