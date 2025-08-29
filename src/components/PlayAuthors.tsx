@@ -8,7 +8,6 @@ import MattRogers from '@/../assets/Avatar images/MattRogers.png';
 import JennUpton from '@/../assets/Avatar images/JennUpton.png';
 import MarisDeBruhl from '@/../assets/Avatar images/MarisDeBruhl.png';
 import CourtneyOakes from '@/../assets/Avatar images/CourtneyOakes.png';
-import SusannahDerr from '@/../assets/Avatar images/SusannahDerr.png';
 import ConnorHarrison from '@/../assets/Avatar images/ConnorHarrison.png';
 
 interface Author {
@@ -87,14 +86,6 @@ export const designAuditAuthors: Author[] = [
   }
 ];
 
-export const outcomesWorkshopAuthors: Author[] = [
-  {
-    name: "Susannah Derr",
-    image: SusannahDerr,
-    initials: "SD"
-  }
-];
-
 export const userJourneyMapAuthors: Author[] = [
   {
     name: "Moriah Cason",
@@ -104,16 +95,6 @@ export const userJourneyMapAuthors: Author[] = [
 ];
 
 export const uxWritingAuthors: Author[] = [
-  {
-    name: "Courtney Starr",
-    image: null,
-    initials: "CS"
-  },
-  {
-    name: "Moriah Cason",
-    image: null,
-    initials: "MC"
-  },
   {
     name: "Connor Harrison",
     image: ConnorHarrison,
@@ -127,12 +108,10 @@ export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsPro
       <div className="flex -space-x-2">
         {authors.map((author, index) => (
           <Avatar key={author.name} className="w-8 h-8 border-2 border-white dark:border-[#0D423C]">
-            {author.image && (
-              <AvatarImage 
-                src={author.image.src || author.image} 
-                alt={author.name}
-              />
-            )}
+            <AvatarImage 
+              src={author.image.src || author.image} 
+              alt={author.name}
+            />
             <AvatarFallback className="text-xs font-medium">
               {author.initials}
             </AvatarFallback>
