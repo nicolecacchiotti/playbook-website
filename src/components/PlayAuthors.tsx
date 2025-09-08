@@ -132,12 +132,17 @@ export const productMappingAuthors: Author[] = [
     name: "Cassie Delbiondo",
     image: "https://ca.slack-edge.com/E03RF3RQZU6-U02MVDHMG-b3f0e13c5a9c-512",
     initials: "CD"
+  }
+];
 
 export const contentAuditAuthors: Author[] = [
   {
     name: "Courtney Rothbard",
     image: "https://ca.slack-edge.com/E03RF3RQZU6-UN46Z1207-b1551dec7c56-512",
     initials: "CR"
+  }
+];
+
 export const designDirectionWorkshopAuthors: Author[] = [
   {
     name: "Paul Lorenzo",
