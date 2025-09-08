@@ -126,11 +126,11 @@ export const userNeedsAssumptionsAuthors: Author[] = [
   }
 ];
 
-export const competitiveOpportunityAuthors: Author[] = [
+export const designDirectionWorkshopAuthors: Author[] = [
   {
-    name: "Hank Thornhill",
-    image: "https://ca.slack-edge.com/E03RF3RQZU6-U026J889GP5-008a24be1ac2-512",
-    initials: "HT"
+    name: "Paul Lorenzo",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U028M8Y9B98-2683335f6071-512",
+    initials: "PL"
   }
 ];
 
