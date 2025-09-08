@@ -126,6 +126,14 @@ export const userNeedsAssumptionsAuthors: Author[] = [
   }
 ];
 
+export const contentAuditAuthors: Author[] = [
+  {
+    name: "Courtney Rothbard",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UN46Z1207-b1551dec7c56-512",
+    initials: "CR"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
