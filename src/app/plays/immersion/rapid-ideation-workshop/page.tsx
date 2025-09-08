@@ -26,12 +26,12 @@ export default function RapidIdeationWorkshopPage() {
           <p className="text-gray-700 leading-relaxed">
             A rapid ideation workshop is a collaborative exercise used to foster innovative product ideas and solutions to provide strategic direction and/or alignment.
           </p>
-          <AudioPlayerWrapper 
-            audioUrl={audioUrl} 
-            imageSrc={rapidIdeationWorkshopArt} 
-            title="Rapid Ideation Workshop"
-            labels={['Workshop', 'Ideation']}
-          />
+                    <AudioPlayerWrapper 
+              audioUrl={audioUrl} 
+              imageSrc={rapidIdeationWorkshopArt} 
+              title="Rapid Ideation Workshop"
+              labels={['Workshop', 'Ideation']}
+            />
           <div className="mt-10">
             <SecondaryTabNav tabs={['Overview', 'Planning & Prep', 'How to run the play', 'Support']} selectedTab={selectedTab} onTabChange={setSelectedTab} />
           </div>
