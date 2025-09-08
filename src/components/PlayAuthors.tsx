@@ -167,6 +167,14 @@ export const designSystemsAuthors: Author[] = [
   }
 ];
 
+export const userTestingAuthors: Author[] = [
+  {
+    name: "Nicole Baeder",
+    image: NicoleBaeder,
+    initials: "NB"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
