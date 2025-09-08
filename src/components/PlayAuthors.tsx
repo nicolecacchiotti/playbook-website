@@ -127,6 +127,12 @@ export const userNeedsAssumptionsAuthors: Author[] = [
 ];
 
 
+export const productMappingAuthors: Author[] = [
+  {
+    name: "Cassie Delbiondo",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U02MVDHMG-b3f0e13c5a9c-512",
+    initials: "CD"
+
 export const contentAuditAuthors: Author[] = [
   {
     name: "Courtney Rothbard",
