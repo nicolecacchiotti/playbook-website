@@ -118,6 +118,14 @@ export const rapidIdeationWorkshopAuthors: Author[] = [
   }
 ];
 
+export const userNeedsAssumptionsAuthors: Author[] = [
+  {
+    name: "July Sosebee",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-USEATRZ40-8726d8e2c48b-512",
+    initials: "JS"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
