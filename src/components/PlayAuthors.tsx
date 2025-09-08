@@ -126,6 +126,14 @@ export const userNeedsAssumptionsAuthors: Author[] = [
   }
 ];
 
+export const competitiveOpportunityAuthors: Author[] = [
+  {
+    name: "Hank Thornhill",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U026J889GP5-008a24be1ac2-512",
+    initials: "HT"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
