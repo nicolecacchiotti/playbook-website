@@ -126,11 +126,33 @@ export const userNeedsAssumptionsAuthors: Author[] = [
   }
 ];
 
+
 export const contentAuditAuthors: Author[] = [
   {
     name: "Courtney Rothbard",
     image: "https://ca.slack-edge.com/E03RF3RQZU6-UN46Z1207-b1551dec7c56-512",
     initials: "CR"
+export const designDirectionWorkshopAuthors: Author[] = [
+  {
+    name: "Paul Lorenzo",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U028M8Y9B98-2683335f6071-512",
+    initials: "PL"
+  }
+];
+
+export const competitiveOpportunityAuthors: Author[] = [
+  {
+    name: "Hank Thornhill",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U026J889GP5-008a24be1ac2-512",
+    initials: "HT"
+  }
+];
+
+export const designSystemsAuthors: Author[] = [
+  {
+    name: "Chris Plosaj",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U03FPUPTJJ1-29f74142def9-512",
+    initials: "CP"
   }
 ];
 

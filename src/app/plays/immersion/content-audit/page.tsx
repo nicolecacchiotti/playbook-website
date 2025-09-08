@@ -67,11 +67,14 @@ export default function ContentAuditPage() {
               <h3 className="text-lg font-semibold mb-3 text-gray-800">You need to assess, track, or take inventory</h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
                 This type of audit can also take the form of a comprehensive review of pages or screens in a product and the content found on each (for example: URL, H1, title, metadata, page description, images, etc.). This helps you to assess the current state / quality of the client's content and to keep track of pages and screens across complex products. Tracking can be quantitative (list or spreadsheet) or qualitative (adding a quality rating for each page or piece of content, tracking noted issues and suggested changes, and whether something should be kept, updated, or removed).
+                
+
               </p>
             </div>
           )}
           {selectedTab === 1 && (
             <div className="mt-8" id="planning-content">
+
               <h2 className="text-xl font-semibold mb-4 text-gray-800">Understand the goals of the client and project</h2>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 Be sure that you have a solid understanding of what the client is hoping to accomplish by hiring WT, in terms of actual product UX and functionality as well as with their brand and audience relationships. We can often take content recommendations beyond UX/UI and into larger brand/audience/thought leadership strategy.
@@ -88,6 +91,7 @@ export default function ContentAuditPage() {
           )}
           {selectedTab === 2 && (
             <div className="mt-8" id="how-to-run-content">
+
               <h2 className="text-xl font-semibold mb-4 text-gray-800">1. Start with a holistic look</h2>
               
               <ul className="list-disc ml-6 space-y-4 mb-6 text-gray-700">
@@ -145,10 +149,12 @@ export default function ContentAuditPage() {
                   </div>
                 }
               />
+
             </div>
           )}
           {selectedTab === 3 && (
             <div className="mt-8" id="support-content">
+                                  
               <h2 className="text-xl font-semibold mb-4 text-gray-800">Common Pitfalls</h2>
               
               <RedCard
