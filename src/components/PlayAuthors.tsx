@@ -175,6 +175,14 @@ export const userTestingAuthors: Author[] = [
   }
 ];
 
+export const contentTestingAuthors: Author[] = [
+  {
+    name: "Connor Harrison",
+    image: ConnorHarrison,
+    initials: "CH"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
