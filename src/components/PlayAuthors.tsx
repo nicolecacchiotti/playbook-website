@@ -142,6 +142,14 @@ export const competitiveOpportunityAuthors: Author[] = [
   }
 ];
 
+export const designSystemsAuthors: Author[] = [
+  {
+    name: "Chris Plosaj",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U03FPUPTJJ1-29f74142def9-512",
+    initials: "CP"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
