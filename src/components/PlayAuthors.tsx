@@ -102,6 +102,14 @@ export const uxWritingAuthors: Author[] = [
   }
 ];
 
+export const outcomesWorkshopAuthors: Author[] = [
+  {
+    name: "Susannah Derr",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U02THS89EEP-09ee9c6712f1-512",
+    initials: "SD"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">

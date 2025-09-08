@@ -23,7 +23,7 @@ export default function OutcomesWorkshopPage() {
           <PlayAuthors authors={outcomesWorkshopAuthors} />
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           <p className="text-gray-700 leading-relaxed">
-            An outcomes workshop is a collaborative activity to align the client and Willow Tree on KPIs linked to business and user goals and how we will measure them.
+            An outcomes workshop is a collaborative activity to align the client and WillowTree on KPIs linked to business and user goals and how we will measure them. Defining outcomes helps focus energy, resources, and attention on what matters most to the business and to users.
           </p>
           <AudioPlayerWrapper 
             audioUrl={audioUrl} 
