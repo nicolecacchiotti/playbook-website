@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -114,14 +115,34 @@ const pageSections: PageSection[] = [
 ];
 
 export default function HamburgerMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleTriggerClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Hamburger menu clicked - current state:', isOpen); // Debug logging
+    setIsOpen(true);
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    console.log('Sheet open state changed to:', open);
+    setIsOpen(open);
+  };
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="fixed top-4 left-4 z-50">
+        <button 
+          className="fixed top-4 left-4 z-[40] pointer-events-auto inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+          onClick={handleTriggerClick}
+          style={{ position: 'fixed', zIndex: 40 }}
+          aria-label="Open navigation menu"
+          type="button"
+        >
           <Menu className="h-4 w-4" />
-        </Button>
+        </button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-[340px] sm:w-[400px] flex flex-col p-0">
+      <SheetContent side="left" className="w-[340px] sm:w-[400px] flex flex-col p-0 z-[55]">
         <SheetHeader className="border-b p-4">
           <SheetTitle className="flex items-center gap-3">
             <div 
@@ -153,6 +174,7 @@ export default function HamburgerMenu() {
                         key={page.slug}
                         href={`/plays/${section.title.toLowerCase().replace(/ /g, '-')}/${page.slug}`}
                         className="text-sm rounded-md p-2 text-muted-foreground hover:text-foreground hover:bg-muted"
+                        onClick={() => setIsOpen(false)}
                       >
                         {page.title}
                       </Link>
