@@ -110,6 +110,14 @@ export const outcomesWorkshopAuthors: Author[] = [
   }
 ];
 
+export const rapidIdeationWorkshopAuthors: Author[] = [
+  {
+    name: "Alex Cornille",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U5NMM86V6-185bd29d4b09-512",
+    initials: "AC"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
