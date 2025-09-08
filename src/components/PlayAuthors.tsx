@@ -126,6 +126,14 @@ export const userNeedsAssumptionsAuthors: Author[] = [
   }
 ];
 
+export const designDirectionWorkshopAuthors: Author[] = [
+  {
+    name: "Paul Lorenzo",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U028M8Y9B98-2683335f6071-512",
+    initials: "PL"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
