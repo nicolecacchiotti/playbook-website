@@ -183,6 +183,14 @@ export const contentTestingAuthors: Author[] = [
   }
 ];
 
+export const developerCollaborationAuthors: Author[] = [
+  {
+    name: "Mike Waclo",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UQDQ0K3CJ-7c8d3dcc1a33-512",
+    initials: "MW"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
