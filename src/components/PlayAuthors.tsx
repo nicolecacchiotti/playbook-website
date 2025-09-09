@@ -199,6 +199,19 @@ export const buildReviewsAuthors: Author[] = [
   }
 ];
 
+export const shootingLiveVideoAuthors: Author[] = [
+  {
+    name: "Brian Weaver",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U03GDRH3M-1b9090f24364-192",
+    initials: "BW"
+  },
+  {
+    name: "Neil Perez",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U04HXCELN48-4d5c88d9235a-512",
+    initials: "NP"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
