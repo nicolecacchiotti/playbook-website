@@ -191,6 +191,14 @@ export const developerCollaborationAuthors: Author[] = [
   }
 ];
 
+export const buildReviewsAuthors: Author[] = [
+  {
+    name: "Zach Painter",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UQS45F5NG-95cafd7a0de3-512",
+    initials: "ZP"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
