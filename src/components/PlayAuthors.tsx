@@ -9,6 +9,7 @@ import JennUpton from '@/../assets/Avatar images/JennUpton.png';
 import MarisDeBruhl from '@/../assets/Avatar images/MarisDeBruhl.png';
 import CourtneyOakes from '@/../assets/Avatar images/CourtneyOakes.png';
 import ConnorHarrison from '@/../assets/Avatar images/ConnorHarrison.png';
+import Nicholette from '@/../assets/Avatar images/Nicholette.png';
 
 interface Author {
   name: string;
@@ -209,6 +210,14 @@ export const shootingLiveVideoAuthors: Author[] = [
     name: "Neil Perez",
     image: "https://ca.slack-edge.com/E03RF3RQZU6-U04HXCELN48-4d5c88d9235a-512",
     initials: "NP"
+  }
+];
+
+export const designPrototypingAuthors: Author[] = [
+  {
+    name: "Nicholette Baldwin",
+    image: Nicholette,
+    initials: "NB"
   }
 ];
 
