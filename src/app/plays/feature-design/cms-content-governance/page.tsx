@@ -3,7 +3,7 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import AudioPlayerWrapper from '@/components/AudioPlayerWrapper';
 import contentGovernanceArt from '@/../assets/Card Art/ContentGovernance.svg';
-import PlayAuthors, { contentTestingAuthors } from '@/components/PlayAuthors';
+import PlayAuthors from '@/components/PlayAuthors';
 import SecondaryTabNav from '@/components/SecondaryTabNav';
 import BlueCard from '@/components/BlueCard';
 import RedCard from '@/components/RedCard';
@@ -23,7 +23,7 @@ export default function CMSContentGovernancePage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           
-          <PlayAuthors authors={contentTestingAuthors} />
+          <PlayAuthors />
           
           <p className="text-gray-700 leading-relaxed">
             Content governance is the system and processes in place to manage content from the point of inception through to publication and future revisions. It incorporates workflows, review processes, guidelines and policies, compliance, and the content life cycle. This play is focussed on the Content Management System (CMS) and efficiency improvements for publishing.
@@ -206,7 +206,7 @@ export default function CMSContentGovernancePage() {
 
               <BlueCard
                 header="When You're Done"
-                body="Teams should feel confident in answering:
+                body={`Teams should feel confident in answering:
 
 What are the processes for the client to manage current content or push new content to end-users in a product?
 
@@ -224,7 +224,7 @@ Potential slides for a client presentation:
 
 • A "side-by-side view" of content in a CMS and its corresponding page in the product.
 
-It may also be helpful to "demo" the CMS in action via video or prototype walkthrough, pending bandwidth."
+It may also be helpful to "demo" the CMS in action via video or prototype walkthrough, pending bandwidth.`}
               />
             </div>
           )}
@@ -239,12 +239,12 @@ It may also be helpful to "demo" the CMS in action via video or prototype walkth
                 <div className="space-y-6">
                   <RedCard
                     header="Not Looping in Tech Partners Into How Content Functions in a CMS"
-                    body="Product architects and developers can help ensure templates are effectively working on the back-end and "pointing" to the UI in the right places. Building a CMS in a vacuum could result in content (text, imagery, etc.) not being delivered to end-users."
+                    body={`Product architects and developers can help ensure templates are effectively working on the back-end and "pointing" to the UI in the right places. Building a CMS in a vacuum could result in content (text, imagery, etc.) not being delivered to end-users.`}
                   />
                   
                   <RedCard
                     header="A Governance Framework That Client Cannot Manage Independently"
-                    body="WillowTree shouldn't have to provide "troubleshooting" support over time. Clients should be able to use the infrastructure (i.e. a customized CMS solution) and guidelines to manage and scale content independently."
+                    body={`WillowTree shouldn't have to provide "troubleshooting" support over time. Clients should be able to use the infrastructure (i.e. a customized CMS solution) and guidelines to manage and scale content independently.`}
                   />
                 </div>
               </div>
