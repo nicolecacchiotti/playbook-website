@@ -29,12 +29,12 @@ export default function CMSContentGovernancePage() {
             Content governance is the system and processes in place to manage content from the point of inception through to publication and future revisions. It incorporates workflows, review processes, guidelines and policies, compliance, and the content life cycle. This play is focussed on the Content Management System (CMS) and efficiency improvements for publishing.
           </p>
           
-          <AudioPlayerWrapper 
-            audioUrl={audioUrl} 
-            imageSrc={contentGovernanceArt} 
-            title="CMS Content Governance"
-            labels={['Content', 'Governance']}
-          />
+                    <AudioPlayerWrapper 
+              audioUrl={audioUrl} 
+              imageSrc={contentGovernanceArt} 
+              title="CMS Content Governance"
+              labels={['Content', 'Governance']}
+            />
 
           <SecondaryTabNav
             tabs={['Overview', 'Planning & Prep', 'How to run the play', 'Support']}
@@ -206,25 +206,34 @@ export default function CMSContentGovernancePage() {
 
               <BlueCard
                 header="When You're Done"
-                body={`Teams should feel confident in answering:
-
-What are the processes for the client to manage current content or push new content to end-users in a product?
-
-Why was a certain CMS chosen and how does it support the editorial and technical requirements of a product?
-
-Share findings
-
-Potential slides for a client presentation:
-
-• Step-by-step editorial flow.
-
-• Proposed CMS requirements.
-
-• Examples of CMS templates.
-
-• A "side-by-side view" of content in a CMS and its corresponding page in the product.
-
-It may also be helpful to "demo" the CMS in action via video or prototype walkthrough, pending bandwidth.`}
+                body={
+                  <div>
+                    <p className="mb-4 font-medium" style={{fontSize: '14px'}}>
+                      Teams should feel confident in answering:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 ml-4 mb-4" style={{fontSize: '14px'}}>
+                      <li>What are the processes for the client to manage current content or push new content to end-users in a product?</li>
+                      <li>Why was a certain CMS chosen and how does it support the editorial and technical requirements of a product?</li>
+                    </ul>
+                    
+                    <p className="mb-2 font-medium" style={{fontSize: '14px'}}>
+                      Share findings
+                    </p>
+                    <p className="mb-2" style={{fontSize: '14px'}}>
+                      Potential slides for a client presentation:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 ml-4 mb-4" style={{fontSize: '14px'}}>
+                      <li>Step-by-step editorial flow.</li>
+                      <li>Proposed CMS requirements.</li>
+                      <li>Examples of CMS templates.</li>
+                      <li>A "side-by-side view" of content in a CMS and its corresponding page in the product.</li>
+                    </ul>
+                    
+                    <p style={{fontSize: '14px'}}>
+                      It may also be helpful to "demo" the CMS in action via video or prototype walkthrough, pending bandwidth.
+                    </p>
+                  </div>
+                }
               />
             </div>
           )}
@@ -253,32 +262,32 @@ It may also be helpful to "demo" the CMS in action via video or prototype walkth
                 <h3 className="text-lg font-semibold mb-4 text-gray-800">Resources</h3>
                 <div className="grid grid-cols-1 gap-4">
                   <ResourceCard
-                    title="Contentful"
+                    title="Content Workflow & Communication Process - Cigna | April 2023 (Emily Banzhaf)"
                     href="#"
                   />
                   
                   <ResourceCard
-                    title="WordPress"
+                    title="CMS Templates | Clinical Reasoning Web Application - McGraw Hill | May 2023 (Rosemary Marston)"
                     href="#"
                   />
                   
                   <ResourceCard
-                    title="Strapi"
+                    title="Content Process (CMS ---> UI) | Clinical Reasoning Web Application Outbrief, slides 21-26 - McGraw Hill | May 2023 (Rosemary Marston)"
                     href="#"
                   />
                   
                   <ResourceCard
-                    title="Sanity"
+                    title="Initial List of Content Types | Clinical Reasoning Web Application - McGraw Hill | May 2022 (Connor Harrison)"
                     href="#"
                   />
                   
                   <ResourceCard
-                    title="Content Governance Framework"
+                    title="CMS Discovery & Conceptual Editorial Flow | Clinical Reasoning Web Application Strategy Outbrief, slides 104-112 - McGraw Hill | June 2022 (Connor Harrison)"
                     href="#"
                   />
                   
                   <ResourceCard
-                    title="Content Model Template"
+                    title="Content Inventory Template (for discovery on content types)"
                     href="#"
                   />
                 </div>
@@ -289,4 +298,4 @@ It may also be helpful to "demo" the CMS in action via video or prototype walkth
       </div>
     </main>
   );
-}
+} 
