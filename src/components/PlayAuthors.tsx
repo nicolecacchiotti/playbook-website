@@ -229,6 +229,19 @@ export const contentGovernanceAuthors: Author[] = [
   }
 ];
 
+export const appStoreOptimizationAuthors: Author[] = [
+  {
+    name: "Shadiah Garwell",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UFLUZ5HS8-1c4776900e3e-512",
+    initials: "SG"
+  },
+  {
+    name: "Dianna Kim",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U02505D2R6H-8d9488a3c62c-512",
+    initials: "DK"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
