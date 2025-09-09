@@ -3,7 +3,7 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import AudioPlayerWrapper from '@/components/AudioPlayerWrapper';
 import contentGovernanceArt from '@/../assets/Card Art/ContentGovernance.svg';
-import PlayAuthors from '@/components/PlayAuthors';
+import PlayAuthors, { contentGovernanceAuthors } from '@/components/PlayAuthors';
 import SecondaryTabNav from '@/components/SecondaryTabNav';
 import BlueCard from '@/components/BlueCard';
 import RedCard from '@/components/RedCard';
@@ -23,7 +23,7 @@ export default function CMSContentGovernancePage() {
         <div className="mt-6 space-y-6">
           <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
           
-          <PlayAuthors />
+          <PlayAuthors authors={contentGovernanceAuthors} />
           
           <p className="text-gray-700 leading-relaxed">
             Content governance is the system and processes in place to manage content from the point of inception through to publication and future revisions. It incorporates workflows, review processes, guidelines and policies, compliance, and the content life cycle. This play is focussed on the Content Management System (CMS) and efficiency improvements for publishing.
