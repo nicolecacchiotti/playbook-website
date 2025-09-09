@@ -242,6 +242,24 @@ export const appStoreOptimizationAuthors: Author[] = [
   }
 ];
 
+export const midjourneyAuthors: Author[] = [
+  {
+    name: "Ashley Bovard",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-U05MJKVPTEH-af2e16847a0b-512",
+    initials: "AB"
+  },
+  {
+    name: "Jonas Phillips",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UQSHWDZA9-167ab4bedac2-512",
+    initials: "JP"
+  },
+  {
+    name: "Jose Mireles",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UJGEJNSCD-53dab40f4e24-192",
+    initials: "JM"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
