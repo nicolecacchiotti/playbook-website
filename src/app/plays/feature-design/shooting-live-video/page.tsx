@@ -229,18 +229,80 @@ export default function ShootingLiveVideoPage() {
                 
                 <div className="space-y-6">
                   <RedCard
-                    header="Poor Audio Quality"
-                    body="Failing to use proper microphones or monitor audio levels can result in unusable footage. Always use external microphones and test audio before recording."
+                    header="Technical Issues"
+                    body={
+                      <div>
+                        <ul className="list-disc list-inside space-y-1" style={{fontSize: '14px'}}>
+                          <li>Poor audio quality</li>
+                          <li>Background noise</li>
+                          <li>Echoes</li>
+                          <li>Muffled sound</li>
+                          <li>Uneven volume levels between speakers</li>
+                          <li>Inadequate lighting</li>
+                          <li>Harsh shadows</li>
+                          <li>Overexposure</li>
+                          <li>Underexposure</li>
+                          <li>Inconsistent lighting</li>
+                          <li>Equipment malfunction</li>
+                          <li>Power outages/low battery</li>
+                          <li>Connectivity issues</li>
+                          <li>Insufficient storage space for recording</li>
+                          <li>Eyeglasses and high reflective surfaces that could be distracting in the recording</li>
+                        </ul>
+                      </div>
+                    }
                   />
                   
                   <RedCard
-                    header="Inadequate Lighting Setup"
-                    body="Poor lighting can make subjects look unprofessional or create unflattering shadows. Always test lighting with stand-ins and avoid shooting directly under harsh overhead lights."
+                    header="Staging"
+                    body={
+                      <div>
+                        <div className="mb-3">
+                          <p className="font-medium mb-2" style={{fontSize: '14px'}}>Distracting backgrounds:</p>
+                          <ul className="list-disc list-inside ml-4 space-y-1" style={{fontSize: '14px'}}>
+                            <li>Busy backgrounds</li>
+                            <li>Reflective surfaces</li>
+                            <li>Distracting objects</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-medium mb-2" style={{fontSize: '14px'}}>Lack of visual variety:</p>
+                          <ul className="list-disc list-inside ml-4 space-y-1" style={{fontSize: '14px'}}>
+                            <li>Static camera angles</li>
+                            <li>Limited shot variety</li>
+                            <li>Lack of b-roll</li>
+                          </ul>
+                        </div>
+                      </div>
+                    }
                   />
                   
                   <RedCard
-                    header="Not Backing Up Files"
-                    body="Losing footage due to equipment failure or human error can be catastrophic. Always have a backup plan and immediately transfer files to cloud storage after shooting."
+                    header="Communication"
+                    body={
+                      <div>
+                        <div className="mb-3">
+                          <p className="font-medium mb-2" style={{fontSize: '14px'}}>Poor communication:</p>
+                          <ul className="list-disc list-inside ml-4 space-y-1" style={{fontSize: '14px'}}>
+                            <li>Miscommunication between team members</li>
+                            <li>Unclear expectations</li>
+                            <li>Inadequate direction given to the interviewees</li>
+                          </ul>
+                        </div>
+                        <div className="mb-3">
+                          <p className="font-medium mb-2" style={{fontSize: '14px'}}>Overlooking participant comfort:</p>
+                          <ul className="list-disc list-inside ml-4 space-y-1" style={{fontSize: '14px'}}>
+                            <li>Failure to address participant concerns or discomfort during the shoot, resulting in stiff or unnatural performances</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-medium mb-2" style={{fontSize: '14px'}}>Ignoring post-production needs:</p>
+                          <ul className="list-disc list-inside ml-4 space-y-1" style={{fontSize: '14px'}}>
+                            <li>Insufficient time or resources allocated for editing, color grading, audio mixing, or other post-production tasks</li>
+                          </ul>
+                        </div>
+                      </div>
+                    }
                   />
                 </div>
               </div>
