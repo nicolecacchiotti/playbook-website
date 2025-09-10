@@ -260,6 +260,14 @@ export const midjourneyAuthors: Author[] = [
   }
 ];
 
+export const chatgptAuthors: Author[] = [
+  {
+    name: "Jonas Phillips",
+    image: "https://ca.slack-edge.com/E03RF3RQZU6-UQSHWDZA9-167ab4bedac2-512",
+    initials: "JP"
+  }
+];
+
 export default function PlayAuthors({ authors = defaultAuthors }: PlayAuthorsProps) {
   return (
     <div className="flex items-center gap-3 mb-4">
